@@ -232,6 +232,76 @@ export const THEMEN = {
   },
 
   // -----------------------------------------------------------------
+  // Organische Chemie
+  // -----------------------------------------------------------------
+
+  organischeChemie: {
+    titel: 'Was organische Chemie ist',
+    text: [
+      'Organische Chemie ist die Chemie der Kohlenstoffverbindungen. Das klingt nach einer Einschränkung, ist aber das Gegenteil: Von den bekannten Verbindungen enthalten weit über neunzig Prozent Kohlenstoff.',
+      'Warum kann ausgerechnet dieses eine Element so viel? Kohlenstoff steht in der vierten Hauptgruppe, hat also vier Außenelektronen und bildet vier Bindungen. Vor allem aber bindet er an sich selbst — in Ketten, Ringen und Verzweigungen, praktisch unbegrenzt lang. Kein anderes Element kann das in diesem Ausmaß.',
+      'Daraus folgt die entscheidende Einsicht: Die Vielfalt der organischen Chemie entsteht nicht aus vielen Bausteinen, sondern aus den vielen Arten, wenige Bausteine anzuordnen. Schon aus zehn Kohlenstoffatomen und Wasserstoff allein lassen sich 75 verschiedene Stoffe bauen.',
+      'Der Name stammt aus einer überholten Vorstellung: Man hielt solche Stoffe für an Lebewesen gebunden und glaubte, sie ließen sich im Labor nicht herstellen. 1828 gelang Friedrich Wöhler die Synthese von Harnstoff aus anorganischem Ausgangsmaterial. Der Name blieb, die Vorstellung nicht.',
+    ],
+    beispiel:
+      'Kohlenstoff, Wasserstoff, Sauerstoff und Stickstoff — vier Elemente. Daraus bestehen Zucker, Fette, Eiweiße, DNA, Kunststoffe, Medikamente und Kraftstoffe.',
+    mehr: ['nomenklatur', 'homologeReihe', 'isomerie', 'hauptgruppe'],
+  },
+
+  nomenklatur: {
+    titel: 'Die IUPAC-Nomenklatur',
+    text: [
+      'Organische Namen sind keine Vokabeln, sondern Bauanleitungen. Wer das System kennt, kann jeden Namen lesen und aus jeder Struktur den Namen bilden — auch bei einem Stoff, den er noch nie gesehen hat.',
+      'Ein Name besteht aus zwei Teilen. Der Wortstamm nennt die Zahl der Kohlenstoffatome in der längsten Kette: Meth für eins, Eth für zwei, Prop für drei, But für vier. Ab fünf wird griechisch gezählt — Pent, Hex, Hept, Oct wie bei Pentagon oder Oktober. Die Endung nennt die Stoffklasse: -an für Alkane, -ol für Alkohole, -al für Aldehyde, -säure für Carbonsäuren.',
+      'Ethanol ist also zwingend der Alkohol mit zwei Kohlenstoffatomen. Und umgekehrt: Ein Aldehyd mit fünf C-Atomen kann nur Pentanal heißen.',
+      'Bei verzweigten oder mehrfach substituierten Molekülen kommen Zahlen dazu, die angeben, an welchem Kohlenstoff eine Gruppe sitzt — Propan-2-ol statt Propan-1-ol. Gezählt wird dabei von dem Ende her, das die kleineren Zahlen ergibt.',
+    ],
+    formel: 'Wortstamm (Kettenlänge) + Endung (Stoffklasse)',
+    beispiel:
+      'Butansäure: But = vier Kohlenstoffatome, -säure = Carbonsäure. Es ist die Substanz, die ranzige Butter riechen lässt — daher der Name (lateinisch butyrum, Butter).',
+    mehr: ['organischeChemie', 'homologeReihe', 'strukturformel'],
+  },
+
+  homologeReihe: {
+    titel: 'Homologe Reihen',
+    text: [
+      'Eine homologe Reihe ist eine Folge von Verbindungen, bei der sich jedes Glied vom vorigen um genau eine CH₂-Gruppe unterscheidet. Methan, Ethan, Propan, Butan — immer ein Kohlenstoff mehr.',
+      'Das Nützliche daran: Die Eigenschaften ändern sich nicht sprunghaft, sondern regelmäßig. Wer die Siedepunkte von drei Gliedern kennt, kann den vierten abschätzen. Chemisch verhalten sich alle Glieder ähnlich, weil sie dieselbe funktionelle Gruppe tragen.',
+      'Bei den Alkanen steigt der Siedepunkt von −162 °C bei Methan auf +174 °C bei Decan. Die Ursache sind die Van-der-Waals-Kräfte zwischen den Molekülen: Je länger die Kette, desto größer die Berührungsfläche und desto stärker der Zusammenhalt.',
+      'Genau darauf beruht die Raffinerie. Erdöl ist ein Gemisch von Alkanen unterschiedlicher Länge, und weil jede Länge einen anderen Siedepunkt hat, lassen sie sich durch Destillation trennen — Gas, Benzin, Kerosin, Diesel, Heizöl, Bitumen.',
+    ],
+    beispiel:
+      'Die ersten vier Alkane sind bei Raumtemperatur gasförmig (Feuerzeuggas ist Butan), ab Pentan flüssig (Benzin), ab etwa 17 Kohlenstoffatomen fest (Kerzenwachs).',
+    mehr: ['organischeChemie', 'nomenklatur', 'isomerie'],
+  },
+
+  isomerie: {
+    titel: 'Isomerie',
+    text: [
+      'Zwei Stoffe können dieselbe Summenformel haben und trotzdem völlig verschieden sein. Sie heißen dann Isomere — die Atome sind dieselben, nur anders angeordnet.',
+      'Die einfachste Form ist die Konstitutionsisomerie: Die Kette ist unterschiedlich verknüpft. Butan und Isobutan haben beide die Formel C₄H₁₀, aber eines ist eine gerade Kette und das andere verzweigt. Sie sieden 11 Grad auseinander.',
+      'Bei der Stereoisomerie ist die Verknüpfung gleich, nur die räumliche Anordnung unterscheidet sich. An einer Doppelbindung kann nichts rotieren, deshalb gibt es cis und trans — die beiden Formen lassen sich nicht ineinander überführen.',
+      'Die feinste Form ist die Spiegelbildisomerie. Trägt ein Kohlenstoffatom vier verschiedene Reste, gibt es das Molekül in zwei Varianten, die sich verhalten wie linke und rechte Hand: gleich aufgebaut, aber nicht zur Deckung zu bringen. Im Labor sind sie kaum zu unterscheiden — im Körper oft dramatisch verschieden, weil Enzyme selbst händig sind.',
+    ],
+    beispiel:
+      'Contergan bestand aus beiden Spiegelbildformen. Die eine wirkte als Schlafmittel, die andere verursachte schwere Fehlbildungen. Seither prüft man Arzneistoffe getrennt nach beiden Formen.',
+    mehr: ['organischeChemie', 'homologeReihe', 'strukturformel'],
+  },
+
+  strukturformel: {
+    titel: 'Strukturformeln lesen',
+    text: [
+      'Eine Summenformel wie C₂H₆O sagt nur, welche Atome vorhanden sind. Sie reicht nicht: Dieselbe Formel steht für Ethanol (Trinkalkohol) und für Dimethylether (ein Gas). Erst die Struktur macht den Unterschied sichtbar.',
+      'Die Halbstrukturformel schreibt die Kette als Text: CH₃–CH₂–OH. Man sieht, welche Gruppe an welcher Stelle sitzt, ohne jede Bindung zu zeichnen.',
+      'Die Skelettformel geht noch weiter und zeichnet nur das Kohlenstoffgerüst als Zickzacklinie. Jeder Knick und jedes Ende ist ein Kohlenstoffatom, die Wasserstoffatome denkt man sich dazu — so viele, bis jeder Kohlenstoff vier Bindungen hat.',
+      'Das wirkt zunächst wie Faulheit, ist aber Absicht. Bei einem größeren Molekül wären hundert eingezeichnete Wasserstoffatome nur Rauschen. Weglassen macht das Wesentliche sichtbar: das Gerüst und die funktionellen Gruppen.',
+    ],
+    beispiel:
+      'Bei Propanol CH₃–CH₂–CH₂–OH zeichnet die Skelettformel drei Knicke und ein OH. Die acht Wasserstoffatome stehen nirgends — und trotzdem ist die Formel eindeutig.',
+    mehr: ['nomenklatur', 'isomerie', 'organischeChemie'],
+  },
+
+  // -----------------------------------------------------------------
   // Reaktionen: Energie, Geschwindigkeit, Gleichgewicht
   // -----------------------------------------------------------------
 

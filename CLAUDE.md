@@ -83,13 +83,14 @@ Jeder Tab ist ein Eintrag im Array `TABS` in `App.js`: Schlüssel, Label und
 Screen-Komponente. Ein neues Themengebiet bedeutet: neue Screen-Datei bauen
 und hier einen Eintrag ergänzen — mehr nicht.
 
-| Tab          | Screen                     | Inhalt                                          |
-|--------------|----------------------------|-------------------------------------------------|
-| PSE          | `PeriodensystemScreen.js`  | Interaktives Periodensystem, Atombau, Trends     |
-| Stöchiometrie| `StoechiometrieScreen.js`  | Molare Masse, Stoffmenge, Reaktionsgleichungen   |
-| Säure/Base   | `SaeureBaseScreen.js`      | pH, pKs, Puffer, Titration                       |
-| Redox        | `RedoxScreen.js`           | Oxidationszahlen, Spannungsreihe, Nernst         |
-| Organik      | `OrganikScreen.js`         | Stoffklassen, funktionelle Gruppen, Nomenklatur  |
+| Tab           | Screen                     | Inhalt                                          |
+|---------------|----------------------------|-------------------------------------------------|
+| PSE           | `PeriodensystemScreen.js`  | Interaktives Periodensystem, Atombau, Trends     |
+| Labor         | `LaborScreen.js`           | Salzbildung herleiten, Reaktionsbibliothek       |
+| Stöchiometrie | `StoechiometrieScreen.js`  | Molare Masse, Umrechnen, Konzentration, Ausgleichen |
+| Säure         | `SaeureBaseScreen.js`      | pH, Puffer, Titrationskurve                      |
+| Redox         | `RedoxScreen.js`           | Oxidationszahlen, Spannungsreihe, Nernst, Elektrolyse |
+| Organik       | `OrganikScreen.js`         | Baukasten, Stoffklassen, homologe Reihen         |
 
 ### Das Info-Button-Konzept
 Neben jedem Fachbegriff sitzt ein kleiner runder `i`-Knopf
@@ -222,7 +223,36 @@ bestandene Bilanzprüfung gehört nicht ins Repo.
 - Umfang je Screen im Detail noch offen — siehe Tabelle oben als Rahmen
 
 ## Status
-Stand 2026-07-27: Projektgerüst steht (Expo SDK 57, blank template,
-Tab-Navigation, Ordnerstruktur, Info-Button-Infrastruktur, EAS- und
-GitHub-Actions-Konfiguration). Die fünf Screens sind angelegt, aber noch
-Platzhalter — die Fachlogik in `utils/` ist der nächste Schritt.
+Stand 2026-07-27: **Alle sechs Screens sind fachlich fertig.** Die App
+ist inhaltlich vollständig und lässt sich veröffentlichen.
+
+Was steht:
+- 118 Elemente mit berechneter Schalenbesetzung, antippbares PSE
+- Labor: Salzbildung hergeleitet (302 Paare geprüft) und 22 kuratierte
+  Reaktionen
+- Stöchiometrie: molare Masse, Umrechnungen, Konzentration,
+  Gleichungsausgleich über lineare Algebra mit Brüchen
+- Säure/Base: pH über die Ladungsbilanz, Puffer, Titrationskurve
+- Redox: Oxidationszahlen hergeleitet, Spannungsreihe, Nernst, Faraday
+- Organik: Nomenklatur und Strukturformeln hergeleitet, Stoffklassen,
+  homologe Reihen
+- 37 Wissensthemen, jedes über mindestens einen Info-Knopf erreichbar
+
+### Prüfskripte
+Die Fachlogik ist maschinell geprüft, nicht nur durchgelesen. Die
+Skripte liegen nicht im Repo (sie entstanden im Arbeitsverzeichnis),
+prüfen aber jeweils gegen Sollwerte aus dem Tafelwerk:
+Elektronenkonfigurationen gegen die Ordnungszahl, Ladungs- und
+Atombilanzen aller Salze, die Atombilanz jeder Reaktion, molare Massen,
+zehn Ausgleich-Gleichungen, pH-Werte und Äquivalenzpunkte,
+Oxidationszahlen einschließlich Peroxid und Hydrid, Namen und
+Summenformeln aller Stoffklassen. Eine Änderung an `utils/` ohne
+bestandene Prüfung gehört nicht ins Repo.
+
+## Offene Punkte (fachlich)
+- Stöchiometrie: Ausbeute und limitierender Reaktionspartner
+- Labor: molekulare Reaktionen nur aus der Sammlung, keine Herleitung
+- Organik: nur unverzweigte Ketten; Verzweigungen, Ringe und die
+  Positionsnummern der IUPAC-Nomenklatur fehlen
+- Säure/Base: mehrprotonige Säuren werden stufenweise behandelt, aber
+  nicht gekoppelt gerechnet
