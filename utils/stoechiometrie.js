@@ -139,6 +139,23 @@ export function formatiereZahl(wert, nachkommastellen = 3) {
   });
 }
 
+// Immer Zehnerpotenz, auch bei mittelgroßen Zahlen. Für Konzentrationen
+// ist das die übliche Schreibweise: c(H₃O⁺) = 1,32 · 10⁻³ mol/L liest
+// man sofort als "knapp über pH 3". Bei "0,00132" muss man erst Nullen
+// zählen, und "1.32e-3" ist Programmiererschreibweise, keine Chemie.
+export function formatiereZehnerpotenz(wert, stellen = 2) {
+  if (!Number.isFinite(wert) || wert === 0) {
+    return '0';
+  }
+  const exponent = Math.floor(Math.log10(Math.abs(wert)));
+  const mantisse = wert / Math.pow(10, exponent);
+  const zahl = mantisse.toLocaleString('de-DE', {
+    minimumFractionDigits: stellen,
+    maximumFractionDigits: stellen,
+  });
+  return `${zahl} · 10${hochgestellt(exponent)}`;
+}
+
 const HOCH = {
   0: '⁰', 1: '¹', 2: '²', 3: '³', 4: '⁴',
   5: '⁵', 6: '⁶', 7: '⁷', 8: '⁸', 9: '⁹', '-': '⁻',

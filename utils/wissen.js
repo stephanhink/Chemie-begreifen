@@ -398,6 +398,60 @@ export const THEMEN = {
     mehr: ['ionenprodukt'],
   },
 
+  naeherungPh: {
+    titel: 'Warum es zwei Ergebnisse gibt',
+    text: [
+      'Für den pH-Wert lernt man in der Schule zwei einfache Formeln. Sie sind beide Näherungen — sie unterschlagen etwas, das meistens nicht ins Gewicht fällt. Diese App rechnet zusätzlich exakt und zeigt, wann der Unterschied groß wird.',
+      'Bei einer starken Säure setzt man pH = −lg c₀ und nimmt damit an, dass alles Oxonium aus der Säure stammt. Wasser liefert aber selbst 10⁻⁷ mol/L. Verdünnt man unter etwa 10⁻⁶ mol/L, wird dieser Beitrag entscheidend — und die Formel liefert Unsinn: Bei 10⁻⁸ mol/L Salzsäure käme pH 8 heraus, also basisch. Eine Säure kann aber niemals basisch werden, egal wie stark man verdünnt. Der richtige Wert liegt bei 6,98.',
+      'Bei einer schwachen Säure setzt man c(HA) ≈ c₀, tut also so, als sei nichts protolysiert. Das stimmt, solange nur wenige Prozent reagieren. Bei etwa 5 % ist die Grenze; darüber unterschlägt man einen zu großen Teil, und die Näherung wird spürbar falsch. Verdünnen macht es schlimmer, nicht besser — je verdünnter, desto größer der Protolysegrad.',
+      'Die App löst stattdessen immer dieselbe Bedingung: die Ladungsbilanz. Eine Lösung ist elektrisch neutral, also müssen sich alle positiven und negativen Ladungen aufheben. Daraus ergibt sich eine Gleichung, die für alle Fälle gilt — verdünnt oder konzentriert, stark oder schwach.',
+    ],
+    formel: 'stark: pH = −lg c₀   ·   schwach: pH = ½ (pKs − lg c₀)',
+    beispiel:
+      '0,1-molare Essigsäure: Näherung und exakter Wert liegen beide bei pH 2,88 — nur 1,3 % protolysieren. Bei 0,001-molarer Essigsäure sind es schon 12,5 %, und die Formel liegt daneben.',
+    mehr: ['phWert', 'ionenprodukt'],
+  },
+
+  puffer: {
+    titel: 'Pufferlösungen',
+    text: [
+      'Ein Puffer ist eine Lösung, die ihren pH-Wert festhält. Gibt man Säure oder Lauge dazu, ändert er sich kaum — statt um mehrere Einheiten zu springen, bewegt er sich um Zehntel.',
+      'Der Trick besteht aus zwei Bestandteilen: einer schwachen Säure und ihrer korrespondierenden Base, beide in nennenswerter Menge. Kommt Säure hinzu, fängt die Base sie ab. Kommt Lauge hinzu, fängt die Säure sie ab. Beide Angreifer werden in die jeweils andere Form des Paares umgewandelt, statt den pH zu verändern.',
+      'Berechnet wird der pH nach Henderson-Hasselbalch. Entscheidend ist dabei nur das VERHÄLTNIS der beiden Konzentrationen, nicht ihre absolute Höhe. Ein Puffer aus 1 mol/L und 1 mol/L hat denselben pH wie einer aus 0,01 und 0,01 — aber er hält viel länger durch, weil mehr zum Abfangen bereitsteht.',
+      'Ein Puffer wirkt nur im Bereich pKs ± 1. Weiter außen ist eine der beiden Komponenten so knapp, dass sie schnell aufgebraucht ist und die Wirkung zusammenbricht. Für einen bestimmten Ziel-pH sucht man deshalb ein Paar mit passendem pKs.',
+    ],
+    formel: 'pH = pKs + lg( c(Base) / c(Säure) )',
+    beispiel:
+      'Unser Blut wird von einem Kohlensäure-Hydrogencarbonat-Puffer bei pH 7,4 gehalten. Weicht er um mehr als 0,05 Einheiten ab, wird es lebensgefährlich — deshalb reguliert der Körper über die Atmung ständig nach.',
+    mehr: ['phWert', 'titration', 'naeherungPh'],
+  },
+
+  titration: {
+    titel: 'Die Titration',
+    text: [
+      'Bei einer Titration bestimmt man, wie viel Säure in einer Probe steckt, indem man sie mit einer Lauge bekannter Konzentration neutralisiert und misst, wie viel man davon braucht.',
+      'Trägt man den pH gegen das zugegebene Volumen auf, entsteht eine charakteristische Kurve: erst flach, dann ein steiler Sprung, dann wieder flach. Der Sprung markiert den Äquivalenzpunkt — dort ist genau so viel Lauge zugegeben, wie Säure vorhanden war.',
+      'Ein weit verbreiteter Irrtum: Der Äquivalenzpunkt liegt NICHT immer bei pH 7. Das gilt nur bei starker Säure mit starker Base. Titriert man eine schwache Säure, entsteht am Äquivalenzpunkt ihre korrespondierende Base — und die reagiert selbst basisch. Bei Essigsäure liegt der Punkt deshalb bei pH 8,7.',
+      'Der Halbäquivalenzpunkt ist chemisch besonders nützlich: Dort liegen Säure und Base im Verhältnis 1:1 vor, der Logarithmus in der Henderson-Hasselbalch-Gleichung wird null, und der abgelesene pH ist direkt der pKs-Wert. Genau so bestimmt man pKs-Werte im Labor.',
+    ],
+    beispiel:
+      '50 mL 0,1-molare Essigsäure mit 0,1-molarer Natronlauge: Der Äquivalenzpunkt liegt bei 50 mL und pH 8,72, der Halbäquivalenzpunkt bei 25 mL und pH 4,75 — dem pKs der Essigsäure.',
+    mehr: ['indikatoren', 'puffer', 'phWert'],
+  },
+
+  indikatoren: {
+    titel: 'Indikatoren',
+    text: [
+      'Ein Indikator zeigt durch seine Farbe an, ob eine Lösung sauer oder basisch ist. Rotkohlsaft ist der bekannteste Vertreter — er wird im Sauren rot und im Basischen grün bis gelb.',
+      'Chemisch ist ein Indikator selbst eine schwache Säure. Ihre Säureform hat eine andere Farbe als ihre Basenform. In saurer Lösung liegt fast alles als Säureform vor, in basischer fast alles als Basenform — dazwischen ändert sich das Verhältnis, und mit ihm die Farbe.',
+      'Umgeschlagen wird deshalb genau dort, wo der pKs des Indikators liegt. Der Umschlagsbereich umfasst etwa pKs ± 1, denn erst ab einem Verhältnis von etwa 1:10 setzt sich eine Farbe sichtbar durch.',
+      'Für eine Titration wählt man den Indikator so, dass sein Umschlagsbereich im steilen Teil der Kurve liegt. Nur dann markiert der Farbwechsel wirklich den Äquivalenzpunkt. Phenolphthalein passt zu schwachen Säuren, Methylorange zu schwachen Basen.',
+    ],
+    beispiel:
+      'Titriert man Essigsäure (Äquivalenzpunkt pH 8,7), nimmt man Phenolphthalein mit Umschlag bei pH 8,2 bis 10. Methylorange (3,1 bis 4,4) würde viel zu früh umschlagen und ein völlig falsches Ergebnis liefern.',
+    mehr: ['titration', 'phWert'],
+  },
+
   ionenprodukt: {
     titel: 'Das Ionenprodukt des Wassers',
     text: [
