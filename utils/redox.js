@@ -5,9 +5,9 @@
 // HERGELEITET (feste Regeln mit klarer Rangfolge), Standardpotentiale
 // werden NACHGESCHLAGEN (sie sind gemessen, nicht ableitbar).
 
-import { parseFormel } from './formel';
-import { elementNachSymbol } from './elemente';
-import { FARADAY, GASKONSTANTE, T_STANDARD } from './konstanten';
+import { parseFormel } from './formel.js';
+import { elementNachSymbol } from './elemente.js';
+import { FARADAY, GASKONSTANTE, T_STANDARD } from './konstanten.js';
 
 // ---------------------------------------------------------------------
 // Oxidationszahlen

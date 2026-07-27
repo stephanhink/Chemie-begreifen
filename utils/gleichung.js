@@ -14,8 +14,8 @@
 // wie 1/3 — mit Gleitkommazahlen käme am Ende 5,999999 statt 6 heraus,
 // und man müsste raten, ob das eine 6 sein soll.
 
-import { parseFormel } from './formel';
-import { elementNachSymbol } from './elemente';
+import { parseFormel } from './formel.js';
+import { elementNachSymbol } from './elemente.js';
 
 // ---------------------------------------------------------------------
 // Brüche

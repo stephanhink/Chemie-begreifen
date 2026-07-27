@@ -238,16 +238,61 @@ Was steht:
   homologe Reihen
 - 37 Wissensthemen, jedes über mindestens einen Info-Knopf erreichbar
 
-### Prüfskripte
-Die Fachlogik ist maschinell geprüft, nicht nur durchgelesen. Die
-Skripte liegen nicht im Repo (sie entstanden im Arbeitsverzeichnis),
-prüfen aber jeweils gegen Sollwerte aus dem Tafelwerk:
-Elektronenkonfigurationen gegen die Ordnungszahl, Ladungs- und
-Atombilanzen aller Salze, die Atombilanz jeder Reaktion, molare Massen,
-zehn Ausgleich-Gleichungen, pH-Werte und Äquivalenzpunkte,
-Oxidationszahlen einschließlich Peroxid und Hydrid, Namen und
-Summenformeln aller Stoffklassen. Eine Änderung an `utils/` ohne
-bestandene Prüfung gehört nicht ins Repo.
+### Prüfungen
+Die Fachlogik ist maschinell geprüft, nicht nur durchgelesen: **4332
+Prüfungen** in `tests/`, jeweils gegen Sollwerte aus dem Tafelwerk.
+
+```
+npm test                 # zwei Sekunden, jederzeit
+npm run build:android    # prüft ZUERST, baut nur bei grün
+```
+
+Die Klemme sitzt im `&&` des Build-Skripts: Schlägt `npm test` fehl,
+wird `eas build` gar nicht erst aufgerufen. Weil hier lokal gebaut wird,
+ist das der eigentliche Torwächter vor dem Play Store — ein
+GitHub-Actions-Lauf könnte einen lokalen Build nicht aufhalten.
+`.github/workflows/tests.yml` läuft trotzdem bei jedem Push, aber mit
+anderem Zweck: als Rückmeldung, damit ein Fehler nicht erst Tage später
+beim nächsten Build auffällt.
+
+Geprüft wird unter anderem: Elektronenkonfigurationen gegen die
+Ordnungszahl (alle 118), Ladungs- und Atombilanz jedes herleitbaren
+Salzes (342), die Atombilanz jeder Reaktion der Sammlung, molare Massen,
+zehn Ausgleich-Gleichungen bis hinauf zu 16 HCl, pH-Werte und
+Äquivalenzpunkte, Oxidationszahlen einschließlich Peroxid und Hydrid,
+Namen und Halbstrukturformeln aller Stoffklassen, und dass kein
+Info-Knopf ins Leere zeigt.
+
+Ebenso wichtig ist, was die Prüfungen ABLEHNEN müssen: erfundene
+Elemente, unbalancierbare Gleichungen, Ketone mit zwei
+Kohlenstoffatomen. Stillschweigend etwas Falsches zu liefern ist
+gefährlicher, als sich zu weigern.
+
+**Eine Änderung an `utils/` ohne bestandene Prüfung gehört nicht ins
+Repo.** Neue Fachlogik bekommt eine neue Prüfung mit.
+
+#### Zwei technische Bedingungen
+1. **Node ≥ 22.7.** Ab dieser Version erkennt Node die Modul-Syntax von
+   `.js`-Dateien selbst. Darauf stützen sich die Prüfungen: Sie
+   importieren `utils/*.js` unmittelbar — kein Transpiler, keine
+   Testbibliothek, und die `package.json` muss nicht auf
+   `"type": "module"` umgestellt werden (das könnte Metro stören).
+   In `engines` vermerkt, im Actions-Workflow gepinnt.
+2. **Interne Importe in `utils/` tragen die Endung `.js`**
+   (`from './formel.js'`, nicht `from './formel'`). Metro käme auch ohne
+   zurecht, Node nicht. Bitte nicht "aufräumen" — sonst laufen die
+   Prüfungen nicht mehr. In `screens/` und `components/` ist die Endung
+   nicht nötig, weil diese Dateien nur durch Metro gehen.
+
+#### Bewusst kein eas-build-pre-install-Hook
+Naheliegend wäre, `npm test` zusätzlich in den EAS-Lifecycle-Hook zu
+hängen, damit die Prüfung auch bei einem direkt eingetippten
+`eas build` greift. Das ist hier NICHT eingerichtet: Die
+Build-Umgebung von EAS bringt möglicherweise eine ältere Node-Version
+mit, und dann schlüge der Hook fehl, obwohl der Code in Ordnung ist —
+ein blockierter Release wegen eines Umgebungsdetails. Wer das
+nachrüsten will, sollte vorher die Node-Version im Build-Log prüfen und
+sie in `eas.json` festschreiben.
 
 ## Offene Punkte (fachlich)
 - Stöchiometrie: Ausbeute und limitierender Reaktionspartner

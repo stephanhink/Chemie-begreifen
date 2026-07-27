@@ -7,7 +7,7 @@
 //
 // Kein React hier drin.
 
-import { KW_25 } from './konstanten';
+import { KW_25 } from './konstanten.js';
 
 // ---------------------------------------------------------------------
 // pKs-Werte (25 °C)

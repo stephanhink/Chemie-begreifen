@@ -13,7 +13,7 @@
 // falsche Reaktionsgleichung wäre für jemanden in der Abiturvorbereitung
 // schlimmer als gar keine.
 
-import { ELEMENTE, elementNachSymbol } from './elemente';
+import { ELEMENTE, elementNachSymbol } from './elemente.js';
 
 // ---------------------------------------------------------------------
 // Welche Ionen bilden sich?

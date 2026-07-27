@@ -5,9 +5,9 @@
 // Formelparser aus utils/formel.js und die molaren Massen aus
 // utils/elemente.js. Kein React, reines JavaScript.
 
-import { parseFormel } from './formel';
-import { elementNachSymbol } from './elemente';
-import { AVOGADRO, MOLVOLUMEN_NORM } from './konstanten';
+import { parseFormel } from './formel.js';
+import { elementNachSymbol } from './elemente.js';
+import { AVOGADRO, MOLVOLUMEN_NORM } from './konstanten.js';
 
 // Molare Masse einer Verbindung in g/mol.
 //

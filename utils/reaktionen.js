@@ -31,7 +31,7 @@
 // Bilanzprüfung um eine Ladungsrechnung erweitern, ohne dass es dem
 // Labor nützt.
 
-import { elementeIn, parseFormel } from './formel';
+import { elementeIn, parseFormel } from './formel.js';
 
 export const REAKTIONSTYPEN = {
   synthese: { label: 'Synthese', beschreibung: 'Aus mehreren Stoffen wird einer.' },

@@ -7,7 +7,7 @@
 // NACHGESCHLAGEN werden Siedepunkte, Trivialnamen und die Zahl der
 // Isomere — die sind gemessen bzw. abgezählt, nicht ableitbar.
 
-import { molareMasse } from './stoechiometrie';
+import { molareMasse } from './stoechiometrie.js';
 
 // Die Wortstämme der Nomenklatur. Die ersten vier sind historisch
 // gewachsen und muss man lernen, ab fünf zählt griechisch weiter —
