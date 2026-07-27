@@ -232,6 +232,76 @@ export const THEMEN = {
   },
 
   // -----------------------------------------------------------------
+  // Reaktionen: Energie, Geschwindigkeit, Gleichgewicht
+  // -----------------------------------------------------------------
+
+  exothermEndotherm: {
+    titel: 'Exotherm und endotherm',
+    text: [
+      'Bei manchen Reaktionen wird Wärme frei — ein Feuer wärmt, eine Batterie wird warm. Bei anderen ist es umgekehrt: Sie kühlen ihre Umgebung ab und laufen nur, solange man Energie zuführt. Das Erste heißt exotherm, das Zweite endotherm.',
+      'Dahinter steckt eine Bilanz. Chemische Bindungen aufzubrechen kostet Energie, neue zu knüpfen liefert welche. Sind die neuen Bindungen zusammen stabiler als die alten, bleibt etwas übrig und wird frei — exotherm. Sind sie schwächer, muss man zuzahlen — endotherm.',
+      'Gemessen wird das als Reaktionsenthalpie ΔH. Das Vorzeichen ist aus Sicht des Reaktionsgemisches zu lesen, nicht aus deiner: Negativ heißt, das Gemisch gibt Energie ab — für dich wird es wärmer. Das verwirrt am Anfang fast jeden.',
+      'Wichtig: ΔH gilt immer für die Gleichung genau so, wie sie aufgeschrieben ist. Verdoppelt man alle Koeffizienten, verdoppelt sich auch ΔH.',
+    ],
+    formel: 'ΔH < 0 → exotherm, Energie wird frei · ΔH > 0 → endotherm, Energie wird gebraucht',
+    beispiel:
+      'Die Knallgasreaktion liefert 572 kJ, wenn zwei Mol Wasserstoff verbrennen. Die Elektrolyse von Wasser — dieselbe Reaktion rückwärts — kostet exakt dieselben 572 kJ. Das ist kein Zufall, sondern der Energieerhaltungssatz.',
+    mehr: ['aktivierungsenergie', 'chemischesGleichgewicht'],
+  },
+
+  aktivierungsenergie: {
+    titel: 'Die Aktivierungsenergie',
+    text: [
+      'Ein Gemisch aus Wasserstoff und Sauerstoff kann jahrelang stehen, ohne etwas zu tun — obwohl die Reaktion enorm viel Energie liefern würde. Ein einziger Funke, und es knallt. Was fehlt, ist der Anstoß: die Aktivierungsenergie.',
+      'Damit zwei Teilchen reagieren, müssen sie erst einmal ihre bestehenden Bindungen lockern. Das kostet Energie, bevor welche zurückkommt. Man kann sich das als Hügel vorstellen, der zwischen den Ausgangsstoffen und den Produkten liegt: Auch wenn es dahinter steil bergab geht, muss man erst hinauf.',
+      'Daraus folgt die vielleicht wichtigste Unterscheidung der Reaktionslehre: Ob eine Reaktion Energie liefert und ob sie von allein losgeht, sind zwei völlig verschiedene Fragen. Benzin in der Tankstelle liefert Energie und tut trotzdem nichts. Zum Glück.',
+      'Wärme hilft, weil sie die Teilchen schneller macht und damit mehr von ihnen über den Hügel bringt. Ein Katalysator hilft anders: Er senkt den Hügel.',
+    ],
+    beispiel:
+      'Die Thermitreaktion liefert 852 kJ und wird über 2000 °C heiß — losgehen tut sie aber erst, wenn man ein brennendes Magnesiumband hineinhält. Ohne das passiert gar nichts.',
+    mehr: ['katalysator', 'exothermEndotherm'],
+  },
+
+  katalysator: {
+    titel: 'Katalysatoren',
+    text: [
+      'Ein Katalysator ist ein Stoff, der eine Reaktion beschleunigt, ohne dabei verbraucht zu werden. Am Ende ist er unverändert wieder da und kann sofort von vorn anfangen.',
+      'Er wirkt, indem er der Reaktion einen anderen Weg anbietet — einen mit niedrigerer Aktivierungsenergie. Statt über den hohen Hügel geht es durch einen Tunnel. Deshalb reichen oft winzige Mengen für riesige Stoffumsätze.',
+      'Zwei Dinge kann ein Katalysator nicht: Er verschiebt kein Gleichgewicht, und er macht aus einer endothermen Reaktion keine exotherme. Er ändert nur, wie schnell der Zustand erreicht wird, nicht welcher es ist. Bei einem Gleichgewicht beschleunigt er beide Richtungen gleich stark.',
+      'In der Biologie heißen Katalysatoren Enzyme. Sie sind der Grund, warum in unseren Zellen bei 37 °C Reaktionen ablaufen, für die man im Labor mehrere hundert Grad bräuchte.',
+    ],
+    beispiel:
+      'Wasserstoffperoxid zerfällt von selbst so langsam, dass eine Flasche jahrelang hält. Eine Spur Braunstein — oder ein Tropfen Blut — und es schäumt sofort auf. Der Braunstein lässt sich danach abfiltrieren und wiederverwenden.',
+    mehr: ['aktivierungsenergie', 'chemischesGleichgewicht'],
+  },
+
+  chemischesGleichgewicht: {
+    titel: 'Das chemische Gleichgewicht',
+    text: [
+      'Viele Reaktionen laufen nicht vollständig ab. Sobald genug Produkt entstanden ist, beginnt es, wieder zu den Ausgangsstoffen zurückzureagieren — und irgendwann sind Hin- und Rückreaktion gleich schnell. Dann ändert sich nichts mehr an den Mengen.',
+      'Von außen sieht das aus wie Stillstand, ist aber keiner. Beide Reaktionen laufen weiter, nur eben gleich schnell in beide Richtungen. Deshalb spricht man von einem dynamischen Gleichgewicht und schreibt einen Doppelpfeil ⇌ statt eines einfachen.',
+      'Stört man das Gleichgewicht, weicht es aus — und zwar so, dass es der Störung entgegenwirkt. Das ist das Prinzip von Le Chatelier. Nimmt man ein Produkt weg, wird nachproduziert. Erhöht man den Druck, weicht es auf die Seite mit weniger Gasteilchen aus. Erwärmt man eine exotherme Reaktion, weicht sie zurück zu den Ausgangsstoffen.',
+      'Daraus entsteht der Zielkonflikt, der in jeder technischen Synthese auftaucht: Was die Ausbeute verbessert, macht die Reaktion oft zu langsam — und umgekehrt.',
+    ],
+    beispiel:
+      'Beim Haber-Bosch-Verfahren wäre Kälte gut für die Ausbeute, weil die Reaktion exotherm ist. Bei Kälte dauert sie aber Jahre. Also arbeitet man bei 450 °C, gleicht die schlechtere Ausbeute mit 200 bar Druck aus und beschleunigt zusätzlich mit einem Katalysator.',
+    mehr: ['katalysator', 'exothermEndotherm'],
+  },
+
+  redoxreaktion: {
+    titel: 'Oxidation und Reduktion',
+    text: [
+      'Eine Redoxreaktion ist eine Reaktion, bei der Elektronen den Besitzer wechseln. Wer Elektronen abgibt, wird oxidiert. Wer sie aufnimmt, wird reduziert.',
+      'Beides geht immer zusammen — Elektronen können nicht einfach verschwinden. Wo einer abgibt, muss ein anderer aufnehmen, und zwar genau gleich viele. Daher der zusammengesetzte Name: Reduktion und Oxidation.',
+      'Der Begriff "Oxidation" kommt vom Sauerstoff, weil das die ersten untersuchten Fälle waren: Rosten, Verbrennen, Atmen. Er ist heute aber weiter gefasst. Auch die Reaktion von Natrium mit Chlor ist eine Oxidation, obwohl kein Sauerstoff beteiligt ist — entscheidend ist die Elektronenabgabe, nicht der Reaktionspartner.',
+      'Praktisch erkennt man Redoxreaktionen an den Oxidationszahlen: Ändert sich mindestens eine, handelt es sich um eine Redoxreaktion.',
+    ],
+    beispiel:
+      'Bei der Thermitreaktion gibt Aluminium Elektronen ab (0 → +III) und wird oxidiert. Eisen nimmt sie auf (+III → 0) und wird reduziert. Das Aluminium reißt dem Eisen den Sauerstoff regelrecht weg.',
+    mehr: ['ionenbindung', 'elektronegativitaet', 'metalleNichtmetalle'],
+  },
+
+  // -----------------------------------------------------------------
   // Stöchiometrie
   // -----------------------------------------------------------------
 

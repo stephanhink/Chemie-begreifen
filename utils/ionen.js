@@ -295,7 +295,7 @@ export function reagiere(elementA, elementB) {
     return {
       art: 'nichtHerleitbar',
       grund:
-        'Zwei Nichtmetalle geben keine Elektronen ab, sondern teilen sie sich — es entsteht eine Atombindung, kein Salz. Welches Molekül dabei herauskommt, lässt sich aber nicht aus der Stellung im Periodensystem ableiten: Kohlenstoff und Sauerstoff ergeben je nach Bedingungen CO oder CO₂. Solche Reaktionen kommen in einem späteren Schritt aus einer geprüften Sammlung.',
+        'Zwei Nichtmetalle geben keine Elektronen ab, sondern teilen sie sich — es entsteht eine Atombindung, kein Salz. Welches Molekül dabei herauskommt, lässt sich nicht aus der Stellung im Periodensystem ableiten: Kohlenstoff und Sauerstoff ergeben je nach Bedingungen CO oder CO₂. Für diese Kombination steht auch nichts in der geprüften Reaktionssammlung — deshalb zeigt die App hier lieber nichts, als etwas zu erfinden.',
       thema: 'ionenbindung',
     };
   }

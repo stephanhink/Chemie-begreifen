@@ -3,6 +3,7 @@ import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import InfoButton from '../components/InfoButton';
 import PeriodensystemGitter from '../components/PeriodensystemGitter';
+import ReaktionsKarte from '../components/ReaktionsKarte';
 import { farben } from '../utils/konstanten';
 import { STOFFKLASSEN, stoffklasseVon } from '../utils/elemente';
 import {
@@ -11,6 +12,9 @@ import {
   ladungsZeichen,
   reagiere,
 } from '../utils/ionen';
+import { findeReaktionen, istElementarreaktion } from '../utils/reaktionen';
+import { REAKTIONEN, gleichungText } from '../utils/reaktionen';
+import { formatiereFormel } from '../utils/formel';
 
 // Das Labor: zwei Elemente antippen und sehen, was daraus wird.
 //
@@ -21,7 +25,14 @@ import {
 export default function LaborScreen() {
   const [gewaehlt, setGewaehlt] = useState([]);
 
-  const ergebnis = gewaehlt.length === 2 ? reagiere(gewaehlt[0], gewaehlt[1]) : null;
+  const vollstaendig = gewaehlt.length === 2;
+
+  // Zwei voneinander unabhängige Quellen — und beide dürfen etwas zu
+  // sagen haben. Die Salzregel rechnet, die Bibliothek schlägt nach.
+  const salz = vollstaendig ? reagiere(gewaehlt[0], gewaehlt[1]) : null;
+  const bibliothek = vollstaendig
+    ? findeReaktionen(gewaehlt.map((e) => e.sym))
+    : [];
 
   function tippe(element) {
     setGewaehlt((alt) => {
@@ -55,7 +66,9 @@ export default function LaborScreen() {
           onLeeren={() => setGewaehlt([])}
         />
 
-        {ergebnis ? <Ergebnis ergebnis={ergebnis} /> : null}
+        {vollstaendig ? (
+          <Ergebnis salz={salz} bibliothek={bibliothek} />
+        ) : null}
 
         {gewaehlt.length === 0 ? (
           <Vorschlaege onWaehlen={(a, b) => setGewaehlt([a, b])} />
@@ -79,6 +92,13 @@ export default function LaborScreen() {
           Blass dargestellte Elemente bilden keine einfachen Ionen. Antippen
           geht trotzdem — dann erklärt die App, warum daraus kein Salz wird.
         </Text>
+
+        {/* Die Sammlung steht bewusst ganz unten: Sie ist lang, und das
+            Periodensystem darüber ist das, womit man eigentlich
+            arbeitet. Sie enthält auch die Reaktionen, die man über zwei
+            Elemente nie findet — Kalkbrennen oder Thermit fangen mit
+            Verbindungen an, nicht mit Elementen. */}
+        {gewaehlt.length === 0 ? <Sammlung /> : null}
       </ScrollView>
     </View>
   );
@@ -133,26 +153,54 @@ function Gefaess({ gewaehlt, onEntfernen, onLeeren }) {
 
 // ---------------------------------------------------------------------
 
-function Ergebnis({ ergebnis }) {
-  if (ergebnis.art !== 'salz') {
-    return (
-      <View style={styles.keinErgebnis}>
-        <Text style={styles.keinErgebnisTitel}>
-          {ergebnis.art === 'keineReaktion'
-            ? 'Da passiert nichts'
-            : 'Das lässt sich hier nicht herleiten'}
-        </Text>
-        <Text style={styles.keinErgebnisText}>{ergebnis.grund}</Text>
-        {ergebnis.thema ? (
-          <View style={styles.themaZeile}>
-            <Text style={styles.themaText}>Mehr dazu</Text>
-            <InfoButton thema={ergebnis.thema} />
-          </View>
-        ) : null}
-      </View>
-    );
-  }
+// Führt die beiden Quellen zusammen. Findet die Salzregel etwas, kommt
+// das zuerst — es ist hergeleitet und damit die stärkere Aussage.
+// Danach folgt, was die Bibliothek zusätzlich weiß.
+function Ergebnis({ salz, bibliothek }) {
+  const direkt = bibliothek.filter(istElementarreaktion);
+  const verwandt = bibliothek.filter((r) => !istElementarreaktion(r));
 
+  return (
+    <View>
+      {salz.art === 'salz' ? (
+        <SalzErgebnis ergebnis={salz} />
+      ) : bibliothek.length === 0 ? (
+        // Weder Regel noch Sammlung: die ehrliche Absage.
+        <View style={styles.keinErgebnis}>
+          <Text style={styles.keinErgebnisTitel}>
+            {salz.art === 'keineReaktion'
+              ? 'Da passiert nichts'
+              : 'Dazu weiß die App nichts'}
+          </Text>
+          <Text style={styles.keinErgebnisText}>{salz.grund}</Text>
+          {salz.thema ? (
+            <View style={styles.themaZeile}>
+              <Text style={styles.themaText}>Mehr dazu</Text>
+              <InfoButton thema={salz.thema} />
+            </View>
+          ) : null}
+        </View>
+      ) : null}
+
+      {direkt.map((reaktion) => (
+        <ReaktionsKarte key={reaktion.id} reaktion={reaktion} />
+      ))}
+
+      {verwandt.length ? (
+        <>
+          <Text style={styles.gruppenTitel}>
+            Verwandte Reaktionen mit denselben Elementen
+          </Text>
+          {verwandt.map((reaktion) => (
+            <ReaktionsKarte key={reaktion.id} reaktion={reaktion} />
+          ))}
+        </>
+      ) : null}
+    </View>
+  );
+}
+
+function SalzErgebnis({ ergebnis }) {
   const { metall, nichtmetall, ergebnisse, mehrdeutig } = ergebnis;
 
   return (
@@ -263,6 +311,45 @@ function Vorschlaege({ onWaehlen }) {
           <Text style={styles.vorschlagHinweis}>{hinweis}</Text>
         </Pressable>
       ))}
+    </View>
+  );
+}
+
+// Die ganze Sammlung zum Durchblättern — auch die Reaktionen, die man
+// über zwei Elemente nie findet, weil ihre Ausgangsstoffe schon
+// Verbindungen sind (Kalkbrennen, Thermit, Photosynthese).
+function Sammlung() {
+  const [offen, setOffen] = useState(null);
+
+  return (
+    <View style={styles.sammlung}>
+      <Text style={styles.vorschlaegeTitel}>
+        Alle {REAKTIONEN.length} Reaktionen der Sammlung
+      </Text>
+      {REAKTIONEN.map((reaktion) => {
+        const istOffen = offen === reaktion.id;
+        return (
+          <View key={reaktion.id}>
+            <Pressable
+              style={styles.sammlungZeile}
+              onPress={() => setOffen(istOffen ? null : reaktion.id)}
+            >
+              <View style={styles.sammlungText}>
+                <Text style={styles.sammlungName}>{reaktion.name}</Text>
+                <Text style={styles.sammlungGleichung}>
+                  {gleichungText(reaktion, formatiereFormel)}
+                </Text>
+              </View>
+              <Text style={styles.pfeil}>{istOffen ? '−' : '+'}</Text>
+            </Pressable>
+            {istOffen ? (
+              <View style={styles.sammlungKarte}>
+                <ReaktionsKarte reaktion={reaktion} />
+              </View>
+            ) : null}
+          </View>
+        );
+      })}
     </View>
   );
 }
@@ -499,5 +586,56 @@ const styles = StyleSheet.create({
     fontSize: 12,
     lineHeight: 17,
     color: farben.textSehrLeise,
+  },
+  gruppenTitel: {
+    marginHorizontal: 20,
+    marginBottom: 10,
+    fontSize: 12,
+    fontWeight: '700',
+    color: farben.textLeise,
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
+  },
+  sammlung: {
+    marginTop: 4,
+    marginBottom: 20,
+    paddingTop: 16,
+    borderTopWidth: 1,
+    borderTopColor: '#eee',
+    marginHorizontal: 20,
+  },
+  sammlungZeile: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+    paddingVertical: 11,
+    borderBottomWidth: 1,
+    borderBottomColor: '#f2f2f2',
+  },
+  sammlungText: {
+    flex: 1,
+  },
+  sammlungName: {
+    fontSize: 15,
+    color: farben.text,
+  },
+  sammlungGleichung: {
+    fontFamily: 'monospace',
+    fontSize: 12,
+    color: farben.textLeise,
+    marginTop: 3,
+  },
+  pfeil: {
+    fontSize: 20,
+    color: farben.primaer,
+    width: 16,
+    textAlign: 'center',
+  },
+  // Die Karte steht innerhalb der Sammlung, die selbst schon 20 Punkte
+  // Rand hat — den gleicht sie hier aus, damit sie nicht doppelt
+  // eingerückt erscheint.
+  sammlungKarte: {
+    marginHorizontal: -20,
+    marginTop: 8,
   },
 });

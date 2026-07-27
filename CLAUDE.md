@@ -158,6 +158,33 @@ als Rechteinhaber des Chemie-Codes ausgewiesen und jedem erlaubt, die App
 zu kopieren und zu verkaufen. Falls ein neues Scaffolding sie wieder
 anlegt: wieder löschen.
 
+### Das Labor: zwei Quellen, streng getrennt
+Der Labor-Screen beantwortet "was entsteht aus diesen beiden Elementen"
+aus zwei voneinander unabhängigen Quellen — und die Trennung ist der
+wichtigste Teil des Entwurfs:
+
+| Quelle | Datei | Woher die Antwort kommt |
+|---|---|---|
+| Salzbildung | `utils/ionen.js` | **hergeleitet** aus Gruppennummer, Oktettregel und kleinstem gemeinsamen Vielfachen |
+| Reaktionen | `utils/reaktionen.js` | **nachgeschlagen** in einer von Hand gepflegten Sammlung |
+
+Was die Regel herleiten kann, wird nie nachgeschlagen. Was sie nicht
+herleiten kann, wird nie geraten. Findet weder die Regel noch die
+Sammlung etwas, sagt die App das offen und begründet es, soweit sie
+kann.
+
+**Die App darf niemals ein Reaktionsprodukt erfinden.** Was in
+beliebigen Kombinationen entsteht, ist chemisch nicht allgemein
+vorhersagbar. Eine plausibel aussehende, aber falsche
+Reaktionsgleichung wäre für jemanden in der Abiturvorbereitung
+schlimmer als gar keine Antwort.
+
+Beide Quellen sind maschinell geprüft: Für alle 302 herleitbaren
+Salzpaare stimmen Ladungs- und Atombilanz, für jede Reaktion der
+Sammlung stimmt die Atombilanz (`bilanz()` in `reaktionen.js`, gestützt
+auf den Formelparser in `utils/formel.js`). Eine neue Reaktion ohne
+bestandene Bilanzprüfung gehört nicht ins Repo.
+
 ## Fachliche Leitlinien
 - **Korrektheit vor Vereinfachung.** Wo eine Näherung üblich ist (z. B.
   pH = ½·(pKs − lg c₀) bei schwachen Säuren), wird zusätzlich exakt gerechnet
