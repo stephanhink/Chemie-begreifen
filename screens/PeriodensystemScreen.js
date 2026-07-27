@@ -10,17 +10,11 @@ import {
 
 import InfoButton from '../components/InfoButton';
 import ElementDetail from '../components/ElementDetail';
-import ElementKachel, {
-  KACHEL_GROESSE,
-  KACHEL_SCHRITT,
-} from '../components/ElementKachel';
+import PeriodensystemGitter from '../components/PeriodensystemGitter';
 import { farben } from '../utils/konstanten';
 import {
   AGGREGATZUSTAENDE,
-  ELEMENTE,
-  GRUPPENNAMEN,
   STOFFKLASSEN,
-  elementNachZ,
   enLegende,
   farbeFuerEN,
   stoffklasseVon,
@@ -46,30 +40,6 @@ function farbeFuer(element, modus) {
   return STOFFKLASSEN[stoffklasseVon(element)];
 }
 
-// Der Hauptblock: 7 Perioden × 18 Gruppen. Lanthanoide und Actinoide
-// fehlen hier — sie stehen unten in eigenen Zeilen, sonst wäre die
-// Tabelle 32 Spalten breit.
-const HAUPTBLOCK = Array.from({ length: 7 }, (_, p) =>
-  Array.from(
-    { length: 18 },
-    (_, g) =>
-      ELEMENTE.find((el) => el.periode === p + 1 && el.gruppe === g + 1) || null
-  )
-);
-
-const LANTHANOIDE = ELEMENTE.filter((el) => el.kategorie === 'lanthanoid');
-const ACTINOIDE = ELEMENTE.filter((el) => el.kategorie === 'actinoid');
-
-// In Periode 6 und 7 sitzt auf Gruppenplatz 3 kein einzelnes Element,
-// sondern der Verweis auf die f-Block-Zeile darunter.
-function PlatzhalterKachel({ text }) {
-  return (
-    <View style={styles.platzhalter}>
-      <Text style={styles.platzhalterText}>{text}</Text>
-    </View>
-  );
-}
-
 export default function PeriodensystemScreen() {
   const [modus, setModus] = useState('stoffklasse');
   const [suche, setSuche] = useState('');
@@ -84,25 +54,6 @@ export default function PeriodensystemScreen() {
     }
     return new Set(sucheElemente(suche).map((el) => el.z));
   }, [suche]);
-
-  // Wird nur mit echten Elementen aufgerufen — die Lücken im Gitter
-  // behandelt der Aufrufer, weil er weiß, an welcher Stelle er steht.
-  function renderKachel(element) {
-    const { farbe, textfarbe } = farbeFuer(element, modus);
-    const abgeblendet = treffer !== null && !treffer.has(element.z);
-
-    return (
-      <View key={element.z} style={abgeblendet ? styles.abgeblendet : null}>
-        <ElementKachel
-          element={element}
-          farbe={farbe}
-          textfarbe={textfarbe}
-          ausgewaehlt={auswahl?.z === element.z}
-          onPress={setAuswahl}
-        />
-      </View>
-    );
-  }
 
   return (
     <View style={styles.flex}>
@@ -147,53 +98,15 @@ export default function PeriodensystemScreen() {
       </View>
 
       <ScrollView>
-        {/* Statt die Kacheln zu schrumpfen, bis man sie weder lesen noch
-            treffen kann, wird waagerecht gescrollt. */}
-        <ScrollView horizontal showsHorizontalScrollIndicator>
-          <View style={styles.gitter}>
-            <View style={styles.spaltenkopfZeile}>
-              {Array.from({ length: 18 }, (_, i) => (
-                <View key={i} style={styles.spaltenkopf}>
-                  <Text style={styles.spaltenkopfText}>{i + 1}</Text>
-                </View>
-              ))}
-            </View>
-
-            {HAUPTBLOCK.map((zeile, index) => (
-              <View key={index} style={styles.zeile}>
-                {zeile.map((element, spalte) => {
-                  // Gruppe 3, Periode 6 und 7: Verweis auf den f-Block.
-                  if (element === null && spalte === 2 && index >= 5) {
-                    return (
-                      <PlatzhalterKachel
-                        key={`f-${index}`}
-                        text={index === 5 ? '57–71' : '89–103'}
-                      />
-                    );
-                  }
-                  return element === null ? (
-                    <View key={`leer-${index}-${spalte}`} style={styles.luecke} />
-                  ) : (
-                    renderKachel(element)
-                  );
-                })}
-              </View>
-            ))}
-
-            <View style={styles.fBlock}>
-              <View style={styles.zeile}>
-                <View style={styles.luecke} />
-                <View style={styles.luecke} />
-                {LANTHANOIDE.map(renderKachel)}
-              </View>
-              <View style={styles.zeile}>
-                <View style={styles.luecke} />
-                <View style={styles.luecke} />
-                {ACTINOIDE.map(renderKachel)}
-              </View>
-            </View>
-          </View>
-        </ScrollView>
+        <PeriodensystemGitter
+          farbeFuer={(element) => farbeFuer(element, modus)}
+          onPress={setAuswahl}
+          istAusgewaehlt={(element) => auswahl?.z === element.z}
+          // Nicht-Treffer der Suche werden abgeblendet statt entfernt —
+          // so bleibt die Form des Periodensystems erhalten und man
+          // sieht, WO der Treffer sitzt.
+          istAbgeblendet={(element) => treffer !== null && !treffer.has(element.z)}
+        />
 
         <View style={styles.unterbereich}>
           <Legende modus={modus} />
@@ -349,51 +262,15 @@ const styles = StyleSheet.create({
     color: farben.weiss,
     fontWeight: '700',
   },
-  gitter: {
-    paddingHorizontal: 20,
-    paddingBottom: 8,
-  },
-  spaltenkopfZeile: {
-    flexDirection: 'row',
-    marginBottom: 2,
-  },
-  spaltenkopf: {
-    width: KACHEL_SCHRITT,
-    alignItems: 'center',
-  },
-  spaltenkopfText: {
-    fontSize: 9,
-    color: farben.textSehrLeise,
-  },
-  zeile: {
-    flexDirection: 'row',
-  },
-  luecke: {
-    width: KACHEL_SCHRITT,
-    height: KACHEL_SCHRITT,
-  },
-  platzhalter: {
-    width: KACHEL_GROESSE,
-    height: KACHEL_GROESSE,
-    margin: 1,
-    borderRadius: 4,
-    borderWidth: 1,
-    borderStyle: 'dashed',
-    borderColor: '#bbb',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  platzhalterText: {
-    fontSize: 9,
-    color: farben.textLeise,
-  },
-  fBlock: {
-    marginTop: 8,
-  },
-  // Nicht-Treffer bei aktiver Suche: sichtbar, aber zurückgenommen.
-  abgeblendet: {
-    opacity: 0.2,
-  },
+
+
+
+
+
+
+
+
+
   unterbereich: {
     padding: 20,
     paddingTop: 12,

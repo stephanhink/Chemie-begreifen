@@ -188,6 +188,50 @@ export const THEMEN = {
   },
 
   // -----------------------------------------------------------------
+  // Chemische Bindung
+  // -----------------------------------------------------------------
+
+  ionenbindung: {
+    titel: 'Die Ionenbindung',
+    text: [
+      'Wenn ein Metall auf ein Nichtmetall trifft, wechseln Elektronen den Besitzer. Das Metall gibt ab, das Nichtmetall nimmt auf. Übrig bleiben geladene Teilchen — Ionen —, und weil Plus und Minus sich anziehen, halten sie zusammen. Das ist die Ionenbindung.',
+      'Warum diese Aufgabenteilung? Beide wollen die volle Außenschale erreichen. Für ein Metall mit ein bis drei Außenelektronen ist der kürzeste Weg dorthin, sie loszuwerden. Für ein Nichtmetall, dem ein bis drei fehlen, ist es der kürzeste Weg, welche aufzunehmen. Die beiden passen also perfekt zusammen.',
+      'Das Ergebnis ist kein Molekül, sondern ein Kristall: Millionen von Ionen, die sich in einem regelmäßigen Gitter abwechseln. Jedes positive Ion ist von negativen umgeben und umgekehrt. Genau deshalb sind Salze hart, spröde und haben hohe Schmelzpunkte — man muss sehr viele Anziehungskräfte gleichzeitig überwinden.',
+      'Zwei Metalle bilden übrigens keine Ionenbindung: Beide wollen abgeben, keiner nimmt. Zwei Nichtmetalle auch nicht — die teilen sich Elektronen, das ist dann eine Atombindung.',
+    ],
+    beispiel:
+      'Kochsalz löst sich in Wasser, weil die Wassermoleküle die Ionen einzeln aus dem Gitter herauslösen. Deshalb leitet Salzwasser Strom, festes Salz aber nicht: Erst in Lösung sind die Ladungen frei beweglich.',
+    mehr: ['verhaeltnisformel', 'metalleNichtmetalle', 'edelgase', 'elektronegativitaet'],
+  },
+
+  verhaeltnisformel: {
+    titel: 'Verhältnisformel und Kreuzregel',
+    text: [
+      'Ein Salz ist nach außen elektrisch neutral. Die positiven und negativen Ladungen müssen sich also genau aufheben — und daraus ergibt sich zwingend, in welchem Zahlenverhältnis die Ionen im Kristall stehen.',
+      'Bei Natrium und Chlor ist es einfach: Na⁺ und Cl⁻ gleichen sich eins zu eins aus, die Formel ist NaCl. Bei Magnesium und Chlor nicht mehr: Mg²⁺ trägt zwei positive Ladungen, Cl⁻ nur eine negative. Es braucht also zwei Chlorid-Ionen pro Magnesium-Ion — MgCl₂.',
+      'Allgemein sucht man das kleinste gemeinsame Vielfache der beiden Ladungszahlen. Bei Aluminium (3+) und Sauerstoff (2−) ist das sechs: zwei Aluminium-Ionen bringen sechs positive, drei Oxid-Ionen sechs negative Ladungen. Al₂O₃. Als Merkhilfe kennt man das als Kreuzregel — die Ladungszahl des einen wird zum Index des anderen.',
+      'Wichtig ist, was so eine Formel bedeutet: Sie beschreibt ein Verhältnis, kein Teilchen. Es gibt kein einzelnes NaCl-Molekül, das man herausgreifen könnte. Im Kristall gibt es nur "auf jedes Natrium-Ion kommt ein Chlorid-Ion".',
+    ],
+    formel: 'Al³⁺ und O²⁻ → kleinstes gemeinsames Vielfaches 6 → Al₂O₃',
+    beispiel:
+      'Magnesium und Stickstoff: Mg²⁺ und N³⁻, kleinstes gemeinsames Vielfaches ist 6. Drei Magnesium-Ionen (6+) auf zwei Stickstoff-Ionen (6−) — die Formel lautet Mg₃N₂.',
+    mehr: ['ionenbindung', 'hauptgruppe', 'edelgase'],
+  },
+
+  nebengruppenIonen: {
+    titel: 'Warum Eisen zwei Ionen bildet',
+    text: [
+      'Bei Hauptgruppenmetallen ist die Ionenladung eindeutig: Natrium gibt genau ein Elektron ab, Magnesium genau zwei. Man kann sie an der Gruppennummer ablesen. Bei Nebengruppenmetallen geht das nicht — Eisen bildet Fe²⁺ und Fe³⁺, Kupfer Cu⁺ und Cu²⁺.',
+      'Der Grund liegt in der Elektronenverteilung. Bei Nebengruppenmetallen liegen die äußeren s-Elektronen und die darunterliegenden d-Elektronen energetisch sehr dicht beieinander. Es kostet deshalb kaum mehr Energie, zusätzlich zu den zwei Außenelektronen noch ein d-Elektron abzugeben. Beide Varianten sind möglich.',
+      'Welche entsteht, hängt von den Bedingungen ab: von der Menge des Reaktionspartners, von der Temperatur, davon wie stark oxidierend die Umgebung ist. Aus der Stellung im Periodensystem allein lässt sich das nicht vorhersagen — deshalb zeigt die App hier alle Möglichkeiten statt einer auszuwählen.',
+      'Damit der Name eindeutig bleibt, schreibt man die Ladung in römischen Ziffern dazu: Eisen(II)-oxid ist FeO, Eisen(III)-oxid ist Fe₂O₃. "Eisenoxid" allein wäre mehrdeutig.',
+    ],
+    beispiel:
+      'Rost ist überwiegend Eisen(III)-oxid. Verbrennt Eisenwolle dagegen bei begrenztem Sauerstoff, entsteht auch Eisen(II)-oxid — dasselbe Metall, derselbe Partner, zwei verschiedene Produkte.',
+    mehr: ['nebengruppe', 'ionenbindung', 'elektronenkonfiguration'],
+  },
+
+  // -----------------------------------------------------------------
   // Stöchiometrie
   // -----------------------------------------------------------------
 

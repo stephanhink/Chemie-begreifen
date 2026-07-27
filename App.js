@@ -10,6 +10,7 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 import { farben } from './utils/konstanten';
 import PeriodensystemScreen from './screens/PeriodensystemScreen';
+import LaborScreen from './screens/LaborScreen';
 import StoechiometrieScreen from './screens/StoechiometrieScreen';
 import SaeureBaseScreen from './screens/SaeureBaseScreen';
 import RedoxScreen from './screens/RedoxScreen';
@@ -24,8 +25,9 @@ import OrganikScreen from './screens/OrganikScreen';
 // einem Handy-Display pro Tab kaum mehr als ein Wort Platz.
 const TABS = [
   { key: 'pse', label: 'PSE', Screen: PeriodensystemScreen },
+  { key: 'labor', label: 'Labor', Screen: LaborScreen },
   { key: 'stoechiometrie', label: 'Stöchio.', Screen: StoechiometrieScreen },
-  { key: 'saeurebase', label: 'Säure/Base', Screen: SaeureBaseScreen },
+  { key: 'saeurebase', label: 'Säure', Screen: SaeureBaseScreen },
   { key: 'redox', label: 'Redox', Screen: RedoxScreen },
   { key: 'organik', label: 'Organik', Screen: OrganikScreen },
 ];
