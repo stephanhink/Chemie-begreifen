@@ -20,6 +20,174 @@
 
 export const THEMEN = {
   // -----------------------------------------------------------------
+  // Periodensystem und Atombau
+  // -----------------------------------------------------------------
+
+  periodensystem: {
+    titel: 'Das Periodensystem',
+    text: [
+      'Das Periodensystem ist eine Sortiertabelle für alle Elemente, aus denen die Welt besteht. Entscheidend ist: Es ist nicht alphabetisch oder zufällig sortiert. Elemente, die sich chemisch ähnlich verhalten, stehen untereinander in derselben Spalte.',
+      'Sortiert wird nach der Zahl der Protonen im Kern, die von links oben nach rechts unten um eins zunimmt. Eine Spalte heißt Gruppe, eine Zeile heißt Periode. Innerhalb einer Gruppe haben alle Elemente gleich viele Außenelektronen — und weil genau die für Reaktionen zuständig sind, verhalten sie sich ähnlich.',
+      'Daraus folgt der eigentliche Wert der Tabelle: Sie ist kein Nachschlagewerk, sondern ein Vorhersagegerät. Wer weiß, wo ein Element steht, weiß ungefähr, wie es reagiert — auch ohne es je gesehen zu haben.',
+    ],
+    beispiel:
+      'Mendelejew ließ 1869 in seiner Tabelle Lücken frei und sagte die Eigenschaften der fehlenden Elemente voraus. Fünfzehn Jahre später wurde Germanium entdeckt — mit fast genau den Werten, die er aufgeschrieben hatte.',
+    mehr: ['ordnungszahl', 'hauptgruppe', 'periode', 'metalleNichtmetalle'],
+  },
+
+  ordnungszahl: {
+    titel: 'Die Ordnungszahl',
+    text: [
+      'Die Ordnungszahl sagt, wie viele Protonen im Kern eines Atoms stecken. Sie ist so etwas wie die Hausnummer des Elements: Sie allein legt fest, um welches Element es sich handelt.',
+      'Protonen sind positiv geladen. Damit ein Atom nach außen neutral ist, muss es genauso viele negative Elektronen besitzen — die Ordnungszahl nennt also gleichzeitig die Elektronenzahl des neutralen Atoms. Ändert man die Protonenzahl, entsteht ein anderes Element; das passiert nur bei Kernreaktionen, nie bei chemischen.',
+      'Die Zahl der Neutronen darf dagegen schwanken. Atome desselben Elements mit unterschiedlicher Neutronenzahl heißen Isotope. Sie verhalten sich chemisch gleich, wiegen aber verschieden — der Grund, warum die molaren Massen im Periodensystem so krumme Zahlen sind.',
+    ],
+    beispiel:
+      'Kohlenstoff hat die Ordnungszahl 6, also immer 6 Protonen. Das häufige ¹²C hat zusätzlich 6 Neutronen, das radioaktive ¹⁴C hat 8 — beides ist Kohlenstoff, beides verbrennt zu CO₂.',
+    mehr: ['molareMasse', 'schalenmodell', 'periodensystem'],
+  },
+
+  hauptgruppe: {
+    titel: 'Gruppen und Hauptgruppen',
+    text: [
+      'Eine Gruppe ist eine Spalte im Periodensystem. Alle Elemente einer Spalte haben gleich viele Außenelektronen — und weil bei einer chemischen Reaktion nur die Außenelektronen mitmachen, reagieren sie alle ähnlich.',
+      'Hauptgruppen sind die Spalten 1 und 2 sowie 13 bis 18. Bei ihnen lässt sich die Zahl der Außenelektronen direkt ablesen: In Gruppe 1 ist es eines, in Gruppe 2 sind es zwei, ab Gruppe 13 zieht man 10 ab — Gruppe 13 hat also drei, Gruppe 17 sieben und Gruppe 18 acht.',
+      'Vier Hauptgruppen haben eigene Namen, weil sie sich besonders typisch verhalten: Alkalimetalle (1), Erdalkalimetalle (2), Halogene (17) und Edelgase (18).',
+    ],
+    formel: 'Außenelektronen = Gruppennummer (Gruppe 1–2) bzw. Gruppennummer − 10 (Gruppe 13–18)',
+    beispiel:
+      'Natrium und Kalium stehen beide in Gruppe 1 und haben beide genau ein Außenelektron. Beide reagieren deshalb heftig mit Wasser — Kalium noch heftiger als Natrium, weil sein Außenelektron weiter vom Kern entfernt sitzt.',
+    mehr: ['nebengruppe', 'schalenmodell', 'edelgase', 'halogene'],
+  },
+
+  nebengruppe: {
+    titel: 'Die Nebengruppen',
+    text: [
+      'Die Nebengruppen sind der breite Block in der Mitte, die Spalten 3 bis 12. Dort stehen die Metalle, die man aus dem Alltag kennt: Eisen, Kupfer, Zink, Silber, Gold.',
+      'Der Unterschied zu den Hauptgruppen: Bei ihnen wird nicht die äußerste Schale weiter gefüllt, sondern eine Schale darunter. Außen bleiben fast immer zwei Elektronen. Deshalb ändern sich die Eigenschaften von links nach rechts viel weniger stark als bei den Hauptgruppen — alle Nebengruppenelemente sind Metalle und einander recht ähnlich.',
+      'Weil auch die inneren Elektronen an Reaktionen teilnehmen können, haben Nebengruppenmetalle oft mehrere mögliche Oxidationszahlen und bilden farbige Verbindungen. Genau das macht sie als Katalysatoren und Farbpigmente so nützlich.',
+    ],
+    beispiel:
+      'Eisen tritt als Fe²⁺ und als Fe³⁺ auf. In wässriger Lösung ist Fe²⁺ blassgrün, Fe³⁺ gelbbraun — dieselbe Sorte Atome, zwei verschiedene Farben.',
+    mehr: ['hauptgruppe', 'elektronenkonfiguration', 'schalenmodell'],
+  },
+
+  periode: {
+    titel: 'Die Periode',
+    text: [
+      'Eine Periode ist eine Zeile im Periodensystem. Ihre Nummer sagt, auf wie viele Schalen sich die Elektronen des Atoms verteilen.',
+      'Am Anfang jeder Zeile fängt eine neue Schale an. Deshalb sind die Zeilen unterschiedlich lang: Die erste Schale fasst nur zwei Elektronen, die zweite und dritte je acht, danach kommen die Nebengruppen dazu und die Zeilen werden 18 und schließlich 32 Elemente lang.',
+      'Innerhalb einer Periode passiert etwas Systematisches: Die Kernladung wächst von links nach rechts, die Elektronen bleiben aber auf derselben Schale. Der Kern zieht sie deshalb immer fester an. Die Atome werden nach rechts kleiner, und die Elektronegativität steigt.',
+    ],
+    beispiel:
+      'Natrium steht in der 3. Periode und hat drei Schalen: 2 · 8 · 1. Chlor steht in derselben Zeile und hat ebenfalls drei Schalen — aber 2 · 8 · 7, und einen viel stärker ziehenden Kern.',
+    mehr: ['schalenmodell', 'elektronegativitaet', 'hauptgruppe'],
+  },
+
+  schalenmodell: {
+    titel: 'Das Schalenmodell',
+    text: [
+      'Die Elektronen schwirren nicht wild um den Kern, sondern halten sich in Bereichen mit festem Abstand auf — den Schalen. Man kann sie sich wie die Ringe einer Zwiebel vorstellen. Für die Chemie zählt fast nur die äußerste.',
+      'Jede Schale fasst eine begrenzte Zahl von Elektronen: die erste zwei, die zweite acht, die dritte 18, die vierte 32. Erst wenn eine Schale voll ist, beginnt die nächste. Die Elektronen auf der äußersten Schale heißen Außenelektronen oder Valenzelektronen — sie allein bestimmen, wie ein Element reagiert.',
+      'Daraus folgt die Oktettregel: Atome sind dann besonders stabil, wenn sie außen acht Elektronen haben. Genau diesen Zustand erreichen sie, indem sie Elektronen abgeben, aufnehmen oder mit anderen teilen — und das ist im Kern schon die ganze Chemie.',
+      'Wo das Modell an seine Grenze kommt: Bei den Nebengruppen füllt sich eine innere Schale weiter auf, während außen alles gleich bleibt. Dafür braucht man das genauere Bild der Orbitale.',
+    ],
+    formel: 'Kapazität der n-ten Schale = 2 · n²',
+    beispiel:
+      'Chlor hat die Besetzung 2 · 8 · 7. Ihm fehlt genau ein Elektron zum vollen Oktett — deshalb nimmt es so bereitwillig eines auf und wird zum Chlorid-Ion Cl⁻.',
+    mehr: ['elektronenkonfiguration', 'hauptgruppe', 'edelgase'],
+  },
+
+  elektronenkonfiguration: {
+    titel: 'Die Elektronenkonfiguration',
+    text: [
+      'Die Elektronenkonfiguration schreibt genau auf, wo sich die Elektronen eines Atoms aufhalten. Sie ist die Feinversion des Schalenmodells: Statt nur "acht Elektronen auf Schale 2" sagt sie, in welchen Unterbereichen dieser Schale sie sitzen.',
+      'Zu lesen ist sie so: Die Zahl vorn nennt die Schale, der Buchstabe den Orbitaltyp, die Hochzahl die Anzahl der Elektronen darin. Es gibt vier Typen mit fester Kapazität — s fasst 2 Elektronen, p fasst 6, d fasst 10 und f fasst 14. Ein Edelgassymbol in eckigen Klammern ist eine Abkürzung für alles, was das davorstehende Edelgas schon hat.',
+      'Eine Überraschung steckt in der Reihenfolge: Gefüllt wird nach steigender Energie, und die läuft nicht streng nach Schalennummer. Das 4s-Orbital liegt energetisch unter dem 3d-Orbital und wird deshalb zuerst besetzt. Genau daher rührt die Form des Periodensystems mit seinem breiten Mittelblock.',
+    ],
+    formel: '[Ar] 3d⁶ 4s²   —   Eisen: Argon-Rumpf, 6 Elektronen im 3d, 2 im 4s',
+    beispiel:
+      'Chrom fällt aus der Reihe: Statt 3d⁴ 4s² besetzt es 3d⁵ 4s¹. Eine halb gefüllte d-Schale ist energetisch günstiger — dasselbe Muster zeigt Kupfer mit voller d-Schale (3d¹⁰ 4s¹).',
+    mehr: ['schalenmodell', 'nebengruppe', 'ordnungszahl'],
+  },
+
+  elektronegativitaet: {
+    titel: 'Die Elektronegativität',
+    text: [
+      'Die Elektronegativität sagt, wie stark ein Atom an den Elektronen zieht, die es sich in einer Bindung mit einem anderen Atom teilt. Je größer der Wert, desto gieriger das Atom.',
+      'Gemessen wird auf der Pauling-Skala von 0,7 (Francium, zieht am schwächsten) bis 3,98 (Fluor, zieht am stärksten). Im Periodensystem folgt sie einem klaren Muster: Nach rechts steigt sie, weil der Kern stärker wird; nach unten fällt sie, weil die Außenelektronen weiter weg sitzen und von den inneren Schalen abgeschirmt werden. Der gierigste Punkt ist also rechts oben.',
+      'Nützlich ist sie, weil man aus der Differenz zweier Werte die Art der Bindung vorhersagen kann. Ziehen beide gleich stark, teilen sie fair — unpolare Atombindung. Zieht einer deutlich stärker, wird die Bindung polar. Ist der Unterschied sehr groß, nimmt der Stärkere das Elektron ganz weg, und es entstehen Ionen.',
+      'Die Grenzwerte unten sind Faustregeln, keine Naturgesetze. Der Übergang ist fließend — es gibt kein Molekül, das bei 1,70 plötzlich zum Salz wird.',
+    ],
+    formel: 'ΔEN < 0,4 unpolar  ·  0,4–1,7 polar  ·  > 1,7 ionisch',
+    beispiel:
+      'Chlorwasserstoff HCl: 3,16 − 2,20 = 0,96 → polare Atombindung, das Chlor zieht stärker. Kochsalz NaCl: 3,16 − 0,93 = 2,23 → das Elektron wechselt ganz den Besitzer, es entstehen Na⁺ und Cl⁻.',
+    mehr: ['periode', 'metalleNichtmetalle', 'hauptgruppe'],
+  },
+
+  metalleNichtmetalle: {
+    titel: 'Metalle, Nichtmetalle und die Treppe',
+    text: [
+      'Die wichtigste Trennlinie im Periodensystem: Links und in der Mitte stehen die Metalle, rechts oben die Nichtmetalle. Dazwischen verläuft eine Grenze, die wie eine Treppe von oben nach rechts unten führt.',
+      'Metalle haben wenige Außenelektronen und geben sie leicht ab. Deshalb bilden sie positive Ionen, leiten Strom und Wärme, glänzen und lassen sich verformen. Nichtmetalle haben viele Außenelektronen und nehmen lieber welche auf. Sie bilden negative Ionen, leiten meist nicht und sind spröde oder gasförmig.',
+      'Warum das so ist, verrät ein Blick aufs Zählen: Wer nur ein Elektron loswerden muss, um eine volle Schale zu erreichen, hat es leichter als jemand, der sieben abgeben müsste — der nimmt lieber eines auf. Genau deshalb haben Metalle niedrige und Nichtmetalle hohe Elektronegativität.',
+      'Diese Grenze ist die einzige wichtige Einteilung, die man der Position im Periodensystem NICHT direkt ansieht — die Gruppen stehen ja ohnehin in Spalten. Deshalb ist sie hier die Standardfärbung.',
+    ],
+    beispiel:
+      'Natrium gibt sein eines Außenelektron ab und wird zu Na⁺. Chlor nimmt genau dieses Elektron auf und wird zu Cl⁻. Die beiden Ionen ziehen sich an — fertig ist das Kochsalz.',
+    mehr: ['halbmetalle', 'elektronegativitaet', 'hauptgruppe'],
+  },
+
+  halbmetalle: {
+    titel: 'Die Halbmetalle',
+    text: [
+      'Halbmetalle sitzen genau auf der Treppe zwischen Metallen und Nichtmetallen — und verhalten sich, wie der Name sagt, von beidem ein bisschen.',
+      'Es sind sechs Stück: Bor, Silicium, Germanium, Arsen, Antimon und Tellur. Sie glänzen oft wie Metalle, sind aber spröde wie Nichtmetalle. Am wichtigsten ist ihre elektrische Eigenschaft: Sie leiten Strom schlechter als Metalle, aber besser als Nichtmetalle — sie sind Halbleiter.',
+      'Genau diese Zwischenstellung macht sie technisch unersetzlich. Ein Material, das mal leitet und mal nicht, ist ein Schalter — und Millionen solcher Schalter ergeben einen Prozessor.',
+    ],
+    beispiel:
+      'Reines Silicium leitet kaum. Baut man gezielt winzige Mengen Fremdatome ein (Dotierung), wird es leitfähig — und zwar steuerbar. Auf diesem Trick beruht jeder Transistor und damit jeder Computer.',
+    mehr: ['metalleNichtmetalle', 'periodensystem'],
+  },
+
+  edelgase: {
+    titel: 'Die Edelgase',
+    text: [
+      'Die Edelgase sind die Spalte ganz rechts: Helium, Neon, Argon, Krypton, Xenon, Radon. Ihre Besonderheit ist, dass sie so gut wie gar nicht reagieren. Chemisch gesehen sind sie satt.',
+      'Der Grund steht in ihrer Elektronenverteilung: Ihre äußerste Schale ist voll besetzt — mit acht Elektronen, bei Helium mit zwei. Sie müssen nichts abgeben und nichts aufnehmen, um stabil zu sein.',
+      'Damit sind sie der Maßstab für alle anderen: Der Zustand, den jedes andere Atom durch Abgeben, Aufnehmen oder Teilen von Elektronen zu erreichen versucht, ist genau die Elektronenverteilung des nächstgelegenen Edelgases. Das ist der eigentliche Inhalt der Oktettregel.',
+      'Weil sie keine Bindungen brauchen, kommen sie als einzelne Atome vor — alle anderen Gase treten paarweise auf (O₂, N₂, Cl₂).',
+    ],
+    beispiel:
+      'Natrium gibt sein eines Außenelektron ab und hat danach exakt die Elektronenverteilung von Neon. Chlor nimmt eines auf und hat dann die von Argon. Beide sind auf dem Weg zum nächsten Edelgas.',
+    mehr: ['schalenmodell', 'hauptgruppe', 'halogene'],
+  },
+
+  halogene: {
+    titel: 'Die Halogene',
+    text: [
+      'Die Halogene sind die vorletzte Spalte: Fluor, Chlor, Brom, Iod. Der Name kommt aus dem Griechischen und heißt "Salzbildner" — genau das tun sie.',
+      'Sie haben sieben Außenelektronen, ihnen fehlt also genau eines zum vollen Oktett. Das macht sie extrem reaktionsfreudig: Ein einzelnes Elektron aufzunehmen ist die kürzeste Strecke zum stabilen Zustand. Dabei entstehen einfach negativ geladene Ionen — Fluorid, Chlorid, Bromid, Iodid.',
+      'Die Reaktionsfreude nimmt nach unten ab. Fluor ist das reaktivste Element überhaupt, Iod schon deutlich zahmer. Der Grund ist derselbe wie bei der Elektronegativität: Je weiter außen die aufnehmende Schale liegt, desto schwächer zieht der Kern.',
+    ],
+    beispiel:
+      'Chlor und Natrium sind eine perfekte Paarung: Natrium will genau ein Elektron loswerden, Chlor will genau eines haben. Das Ergebnis ist Kochsalz — aus einem hochgiftigen Gas und einem Metall, das in Wasser brennt.',
+    mehr: ['edelgase', 'metalleNichtmetalle', 'elektronegativitaet'],
+  },
+
+  lanthanoide: {
+    titel: 'Lanthanoide und Actinoide',
+    text: [
+      'Das sind die beiden Zeilen, die abgesetzt unter dem Periodensystem stehen. Sie sind nicht weniger wichtig als der Rest — sie gehören eigentlich mitten hinein, in die Lücke zwischen Gruppe 2 und 3. Stünden sie dort, wäre die Tabelle fast doppelt so breit und auf keinem Bildschirm mehr lesbar.',
+      'Bei ihnen füllt sich eine Schale auf, die noch weiter innen liegt als bei den Nebengruppen (die f-Orbitale). Außen ändert sich dabei praktisch nichts — deshalb ähneln sich die 15 Lanthanoide untereinander so stark, dass man sie chemisch nur mit großem Aufwand trennen kann.',
+      'Die Lanthanoide heißen auch Seltene Erden. Der Name führt in die Irre: Sie sind gar nicht so selten, nur schwer voneinander zu trennen. Die Actinoide sind fast alle radioaktiv; ab Ordnungszahl 93 kommen sie in der Natur nicht mehr vor, sondern werden künstlich erzeugt.',
+    ],
+    beispiel:
+      'Neodym steckt in den stärksten Dauermagneten, die es gibt — in Kopfhörern, Festplatten und den Generatoren von Windrädern. Ohne diese "seltene Erde" gäbe es keine Elektromotoren dieser Leistungsdichte.',
+    mehr: ['nebengruppe', 'elektronenkonfiguration', 'periodensystem'],
+  },
+
+  // -----------------------------------------------------------------
   // Stöchiometrie
   // -----------------------------------------------------------------
 

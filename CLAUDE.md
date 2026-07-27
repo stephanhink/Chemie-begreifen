@@ -12,6 +12,12 @@ Zielgruppe: Gymnasiastinnen und Gymnasiasten der Oberstufe, 16–18 Jahre
 Kinder-App: echte Formeln, korrekte Einheiten, keine vereinfachten
 Näherungen — aber jeder Begriff wird an Ort und Stelle erklärt.
 
+**Ausdrücklich mitgedacht sind die, die im Unterricht nicht durchgehend
+aufgepasst haben.** Die App muss Wissenslücken schließen können, ohne dass
+man vorher weiß, welche Lücke man hat. Wer den Anschluss verloren hat, soll
+an jeder Stelle einsteigen und sich nach unten durcharbeiten können, bis er
+auf festem Boden steht.
+
 Aufgebaut analog zum Schwesterprojekt `finanz-kids` (gleicher Tech-Stack,
 gleiche Ordnerstruktur, gleiches Info-Button-Konzept).
 
@@ -98,6 +104,38 @@ Themen, erscheinen als Links) und `formel`.
 
 Neues Thema: Eintrag in `utils/wissen.js` ergänzen und im Screen ein
 `<InfoButton thema="..." />` neben das Label setzen.
+
+#### Wo der Knopf sitzt
+In `finanz-kids` hängt der Info-Knopf immer an einem Eingabefeld
+(`FeldLabel`). Hier reicht das nicht: Im Periodensystem gibt es kaum
+Eingabefelder, aber viele erklärungsbedürftige Wörter. Der Knopf gehört
+deshalb überall dorthin, wo ein Fachbegriff sichtbar wird — an
+Überschriften, Legenden, Spaltenköpfe ("Hauptgruppe", "Periode"),
+Detailzeilen einer Element-Kachel, Achsenbeschriftungen.
+
+`InfoButton` ist von `FeldLabel` unabhängig und lässt sich überall
+einzeln setzen. Faustregel: **Steht ein Wort auf dem Bildschirm, das man
+im Unterricht gelernt haben müsste, gehört ein `i` daneben.** Lieber einer
+zu viel als einer zu wenig — ein ungenutzter Knopf kostet nichts, ein
+fehlender kostet den Anschluss.
+
+#### Wie die Texte geschrieben sind
+Die Zielgruppe umfasst ausdrücklich die, die eine Lücke haben. Daraus
+folgt der Aufbau jedes Eintrags:
+
+1. **Erster Absatz: die Antwort in Alltagssprache**, ohne Voraussetzungen,
+   ohne Formel, ohne weiteren Fachbegriff. Wer nur diesen Absatz liest,
+   muss die Frage beantwortet haben.
+2. **Danach die Tiefe**: das Warum, der Zusammenhang, die Formel. Wer mehr
+   will, liest weiter; wer nicht, ist schon fertig.
+3. **`beispiel`**: eine konkrete Zahl. Abstraktes bleibt abstrakt, bis man
+   es einmal an echten Werten gesehen hat.
+4. **`mehr`**: die Begriffe, über die man in diesem Text stolpern könnte —
+   und die Grundlagen eine Ebene tiefer. So wird aus einem Stolperer ein
+   Pfad nach unten, statt einer Sackgasse.
+
+Erscheint im Text ein Fachbegriff, der nicht im ersten Absatz erklärt wird
+und auch nicht unter `mehr` verlinkt ist, ist der Eintrag unfertig.
 
 ## Workflow
 - Code wird per Prompt hier in Claude Code geschrieben, nicht von Hand getippt
