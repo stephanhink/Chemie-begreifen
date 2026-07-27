@@ -33,9 +33,19 @@ yarn-error.*
 # local env files
 .env*.local
 
+# persönliche Claude-Code-Einstellungen (settings.json gehört ins Repo,
+# settings.local.json ist rechnerspezifisch)
+.claude/settings.local.json
+
 # typescript
 *.tsbuildinfo
 
 # generated native folders
 /ios
 /android
+
+# Build-Artefakte lokaler EAS-Builds ("eas build --local" legt die fertige
+# Datei im Projektordner ab). Gehören nicht ins Repo — mehrere zehn MB pro
+# Stück, und sie werden ohnehin bei jedem Build neu erzeugt.
+build-*.aab
+build-*.apk
