@@ -288,6 +288,62 @@ export const THEMEN = {
     mehr: ['katalysator', 'exothermEndotherm'],
   },
 
+  oxidationszahl: {
+    titel: 'Oxidationszahlen',
+    text: [
+      'Die Oxidationszahl ist ein Buchhaltungstrick. Man tut so, als wären alle Bindungen in einem Molekül reine Ionenbindungen, und teilt jedes bindende Elektronenpaar vollständig dem elektronegativeren Partner zu. Die Zahl sagt dann, wie viele Elektronen ein Atom dabei rechnerisch gewonnen oder verloren hat.',
+      'Sie ist also keine echte Ladung, sondern eine Rechengröße. Deshalb schreibt man sie in römischen Ziffern mit Vorzeichen — +VI statt 6+ —, damit man sie nicht mit einer Ionenladung verwechselt.',
+      'Wozu der Aufwand? Weil sich damit auf einen Blick erkennen lässt, ob eine Reaktion eine Redoxreaktion ist: Ändert sich mindestens eine Oxidationszahl, haben Elektronen den Besitzer gewechselt.',
+      'Entscheidend ist, dass die Regeln eine RANGFOLGE bilden und keine Sammlung gleichberechtigter Aussagen. Genau daran scheitern die meisten. Wer bei H₂O₂ zuerst „Sauerstoff ist immer −II" anwendet, landet im Widerspruch. Richtig ist: Wasserstoff steht weiter oben und ist +I, dann ergibt sich Sauerstoff zwingend zu −I.',
+    ],
+    formel: 'F −I · Alkalimetalle +I · Erdalkali +II · H +I (außer als Hydrid) · O −II (außer in Peroxiden) · Summe = Gesamtladung',
+    beispiel:
+      'In KMnO₄: Kalium ist +I, Sauerstoff −II. Vier Sauerstoff bringen −8, mit dem Kalium bleibt für Mangan +VII, damit die Summe null wird. Mehr geht bei Mangan nicht — deshalb ist Permanganat ein so starkes Oxidationsmittel.',
+    mehr: ['redoxreaktion', 'elektronegativitaet', 'spannungsreihe'],
+  },
+
+  spannungsreihe: {
+    titel: 'Die elektrochemische Spannungsreihe',
+    text: [
+      'Die Spannungsreihe ordnet Metalle und andere Stoffe danach, wie gern sie Elektronen abgeben. Ganz oben stehen die unedlen — Lithium, Kalium, Natrium —, die ihre Elektronen fast verschenken. Ganz unten die edlen wie Silber und Gold, die sie festhalten.',
+      'Gemessen wird gegen einen willkürlich festgelegten Nullpunkt: die Standard-Wasserstoffelektrode. Dass Wasserstoff bei 0,00 V steht, ist also eine Vereinbarung, keine Naturkonstante. Nur die Differenzen zwischen zwei Werten sind physikalisch bedeutsam — und genau die misst man als Zellspannung.',
+      'Die Reihe ist ein Vorhersagegerät: Ein Stoff kann immer die Ionen jedes Partners verdrängen, der unter ihm steht. Ein Zinkblech in Kupfersulfatlösung überzieht sich mit Kupfer, weil Zink oben steht. Ein Kupferblech in Zinksulfatlösung bleibt blank — umgekehrt läuft nichts.',
+      'Wichtig: Die Werte gelten nur unter Standardbedingungen, also bei 25 °C und 1 mol/L. Weichen die Konzentrationen ab, verschiebt sich das Potential — das berechnet die Nernst-Gleichung.',
+    ],
+    formel: 'ΔE = E(Kathode) − E(Anode)',
+    beispiel:
+      'Das Daniell-Element aus Zink (−0,76 V) und Kupfer (+0,34 V) liefert 1,10 V. Zink ist der Minuspol und löst sich auf, am Kupfer scheidet sich Kupfer ab.',
+    mehr: ['nernstThema', 'redoxreaktion', 'metalleNichtmetalle'],
+  },
+
+  nernstThema: {
+    titel: 'Die Nernst-Gleichung',
+    text: [
+      'Die Werte der Spannungsreihe gelten nur bei einer Konzentration von 1 mol/L. Verdünnt man eine Halbzelle, ändert sich ihr Potential — die Nernst-Gleichung sagt, um wie viel.',
+      'Anschaulich: Sind wenige Ionen da, die Elektronen aufnehmen könnten, sinkt die Bereitschaft zur Reduktion. Das Potential wird kleiner. Umgekehrt steigt es, wenn viele Ionen zur Verfügung stehen.',
+      'Im Unterricht benutzt man fast immer die Kurzform mit der Konstanten 0,059 V. Diese Zahl ist aber keine Naturkonstante, sondern (R·T)/F · ln 10 — und darin steckt die Temperatur. Bei 25 °C ergibt sich 0,0592 V, deshalb die Faustzahl. Bei anderen Temperaturen stimmt sie nicht mehr.',
+      'Der Faktor 1/z ist genauso wichtig: Bei einer Halbzelle mit zwei übertragenen Elektronen wirkt sich eine Konzentrationsänderung nur halb so stark aus. Deshalb ändert sich das Potential pro Zehnerpotenz bei Cu²⁺ um 30 mV, bei Ag⁺ dagegen um 59 mV.',
+    ],
+    formel: 'E = E° + (R·T)/(z·F) · ln( c(Ox)/c(Red) )',
+    beispiel:
+      'Eine Kupfer-Halbzelle mit c = 0,001 mol/L statt 1 mol/L: Das Potential sinkt von 0,34 V auf 0,25 V. Erwärmt man auf 80 °C, liegt die Schulformel schon 17 mV daneben.',
+    mehr: ['spannungsreihe', 'redoxreaktion'],
+  },
+
+  faraday: {
+    titel: 'Die Faraday-Gesetze',
+    text: [
+      'Bei einer Elektrolyse zwingt man mit Strom eine Reaktion, die von allein nicht abliefe — etwa Kupfer aus einer Lösung abzuscheiden. Wie viel dabei entsteht, lässt sich exakt ausrechnen.',
+      'Der Gedanke ist einfach: Strom ist bewegte Ladung, und jedes Elektron trägt eine bestimmte Ladung. Zählt man die Elektronen, weiß man, wie viele Teilchen umgesetzt wurden. Die Ladung eines ganzen Mols Elektronen heißt Faraday-Konstante und beträgt 96 485 Coulomb.',
+      'Der zweite Faktor ist z, die Zahl der Elektronen pro Teilchen: Ein Silber-Ion braucht eines, ein Kupfer-Ion zwei, ein Aluminium-Ion drei. Für dieselbe Strommenge bekommt man deshalb dreimal weniger Aluminium als Silber.',
+      'Genau das macht die Aluminiumherstellung so stromhungrig — sie verschlingt etwa ein Prozent des weltweiten Stromverbrauchs.',
+    ],
+    formel: 'm = (M · I · t) / (z · F)   mit F = 96 485 C/mol',
+    beispiel:
+      'Ein Ampere über eine Stunde ergibt 3600 Coulomb, also 0,0373 mol Elektronen. Bei Cu²⁺ (z = 2) sind das 0,0187 mol Kupfer — knapp 1,2 Gramm.',
+    mehr: ['redoxreaktion', 'stoffmenge', 'spannungsreihe'],
+  },
+
   redoxreaktion: {
     titel: 'Oxidation und Reduktion',
     text: [
