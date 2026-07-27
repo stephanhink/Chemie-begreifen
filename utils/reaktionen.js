@@ -516,10 +516,6 @@ export function istElementarreaktion(reaktion) {
   );
 }
 
-export function reaktionNachId(id) {
-  return REAKTIONEN.find((r) => r.id === id) || null;
-}
-
 // Prüft, ob eine Gleichung ausgeglichen ist. Wird vom Prüfskript für
 // alle Einträge aufgerufen — und ist der Grund, warum man dieser
 // Sammlung trauen kann.

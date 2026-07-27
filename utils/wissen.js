@@ -318,6 +318,61 @@ export const THEMEN = {
     mehr: ['molareMasse'],
   },
 
+  molaresVolumen: {
+    titel: 'Das molare Volumen',
+    text: [
+      'Ein Mol eines Gases nimmt immer ungefähr denselben Raum ein — rund 22,4 Liter. Und zwar unabhängig davon, um welches Gas es sich handelt.',
+      'Das klingt zunächst unglaublich: Ein Mol Wasserstoff wiegt 2 Gramm, ein Mol Kohlenstoffdioxid 44 Gramm, und trotzdem füllen beide dieselbe Kiste. Der Grund ist, dass in einem Gas fast nur leerer Raum ist. Die Teilchen selbst nehmen kaum Platz ein — es zählt nur, wie viele es sind und wie weit sie auseinanderfliegen.',
+      'Wichtig ist der Bezugszustand, denn Gase dehnen sich bei Wärme aus. Bei Normbedingungen (0 °C und 1013 hPa) sind es 22,4 L/mol, bei Standardbedingungen (25 °C und 1000 hPa) rund 24,8 L/mol. Im deutschen Unterricht ist meist der erste Wert gemeint.',
+      'Für Feststoffe und Flüssigkeiten gilt das alles nicht — dort berühren sich die Teilchen, und das Volumen hängt sehr wohl davon ab, welcher Stoff es ist.',
+    ],
+    formel: 'V = n · V_m   mit V_m = 22,4 L/mol (0 °C, 1013 hPa)',
+    beispiel:
+      'Ein Luftballon mit 22,4 Litern Helium enthält ein Mol Helium — also 6·10²³ Atome, die zusammen nur 4 Gramm wiegen.',
+    mehr: ['stoffmenge', 'molareMasse'],
+  },
+
+  massenanteil: {
+    titel: 'Der Massenanteil',
+    text: [
+      'Der Massenanteil sagt, welcher Bruchteil der Masse einer Verbindung auf ein bestimmtes Element entfällt. Man gibt ihn meist in Prozent an.',
+      'Er wird oft mit der Anzahl der Atome verwechselt, ist aber etwas anderes. In Wasser stecken doppelt so viele Wasserstoff- wie Sauerstoffatome — trotzdem macht Wasserstoff nur 11 % der Masse aus. Sauerstoffatome sind eben sechzehnmal schwerer.',
+      'Praktisch braucht man das, um von einer Analyse zur Formel zu kommen: Ein Labor bestimmt die Massenanteile, und daraus lässt sich rückwärts das Atomverhältnis und damit die Verhältnisformel berechnen.',
+    ],
+    formel: 'w(Element) = (Anzahl · M(Element)) / M(Verbindung)',
+    beispiel:
+      'In Wasser: 2 · 1,008 g/mol = 2,016 g/mol Wasserstoff bei 18,015 g/mol insgesamt — also 11,2 %. Der Rest, 88,8 %, ist Sauerstoff.',
+    mehr: ['molareMasse', 'stoffmenge'],
+  },
+
+  konzentrationThema: {
+    titel: 'Konzentration und Verdünnen',
+    text: [
+      'Die Stoffmengenkonzentration sagt, wie viel Stoff in einem Liter Lösung steckt. Ihre Einheit ist mol/L, und man schreibt sie mit dem Stoff in Klammern: c(NaCl) = 0,1 mol/L.',
+      'Um eine solche Lösung anzusetzen, rechnet man in zwei Schritten. Erst c · V, das ergibt die Stoffmenge. Dann mal der molaren Masse, das ergibt die Gramm, die man abwiegt.',
+      'Ein Detail, das im Praktikum zählt: „auf 500 mL auffüllen" ist nicht dasselbe wie „500 mL Wasser dazugeben". Der gelöste Stoff nimmt selbst Platz ein. Deshalb wiegt man ihn in einen Messkolben ein und füllt bis zur Markierung auf.',
+      'Beim Verdünnen ändert sich das Volumen, die Stoffmenge aber nicht — es kommt ja nur Wasser dazu. Daraus folgt unmittelbar c₁ · V₁ = c₂ · V₂. Wer eine Lösung auf ein Zehntel verdünnen will, füllt sie auf das Zehnfache auf.',
+    ],
+    formel: 'c = n / V   ·   Verdünnen: c₁ · V₁ = c₂ · V₂',
+    beispiel:
+      'Für 500 mL einer 0,1-molaren Kochsalzlösung: n = 0,1 mol/L · 0,5 L = 0,05 mol. Mal 58,44 g/mol ergibt 2,92 g Kochsalz, im Messkolben auf 500 mL aufgefüllt.',
+    mehr: ['stoffmenge', 'molareMasse'],
+  },
+
+  reaktionsgleichung: {
+    titel: 'Reaktionsgleichungen ausgleichen',
+    text: [
+      'Bei einer chemischen Reaktion werden Atome nur neu angeordnet — es entsteht keines aus dem Nichts, und es verschwindet keines. Deshalb muss von jedem Element links genauso viel stehen wie rechts.',
+      'Verändern darf man dabei nur die Zahlen VOR den Formeln, die Koeffizienten. Die Indizes innerhalb einer Formel sind tabu: Aus H₂O eine H₂O₂ zu machen, damit es aufgeht, wäre ein anderer Stoff — Wasser gegen Wasserstoffperoxid.',
+      'Von Hand geht man meist der Reihe nach vor: erst die Elemente, die nur in einer Verbindung auf jeder Seite vorkommen, zuletzt Sauerstoff und Wasserstoff, die überall auftauchen. Am Ende kürzt man die Koeffizienten so weit wie möglich.',
+      'Diese App probiert nicht herum, sondern rechnet: Jedes Element liefert eine Gleichung, jeder Stoff eine Unbekannte, und das entstehende lineare Gleichungssystem wird exakt gelöst.',
+    ],
+    formel: 'Fe + O₂ → Fe₂O₃  wird zu  4 Fe + 3 O₂ → 2 Fe₂O₃',
+    beispiel:
+      'Bei 4 Fe + 3 O₂ → 2 Fe₂O₃ stehen links 4 Eisen und 6 Sauerstoff, rechts 2 · 2 = 4 Eisen und 2 · 3 = 6 Sauerstoff. Die Probe ist genau diese Zählung.',
+    mehr: ['stoffmenge', 'molareMasse'],
+  },
+
   molareMasse: {
     titel: 'Die molare Masse',
     text: [
