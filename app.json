@@ -15,6 +15,13 @@
     },
     "android": {
       "package": "com.hink.chemie",
+      "blockedPermissions": [
+        "android.permission.SYSTEM_ALERT_WINDOW",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.DUMP",
+        "android.permission.VIBRATE"
+      ],
       "adaptiveIcon": {
         "backgroundColor": "#E3F5EC",
         "foregroundImage": "./assets/android-icon-foreground.png",

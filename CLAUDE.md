@@ -294,6 +294,42 @@ ein blockierter Release wegen eines Umgebungsdetails. Wer das
 nachrüsten will, sollte vorher die Node-Version im Build-Log prüfen und
 sie in `eas.json` festschreiben.
 
+## Veröffentlichung
+
+Das Projekt ist als `@heilpraktikerdk/chemie` mit expo.dev verknüpft.
+Keystore und Versionszähler liegen dort, gebaut wird lokal:
+
+```
+npm run build:android    # prüft, dann eas build --local
+```
+
+`appVersionSource: "remote"` in `eas.json` zählt den versionCode zentral
+hoch. In `app.json` steht deshalb bewusst KEIN `versionCode` — beides
+zugleich würde auseinanderlaufen.
+
+### Berechtigungen sind ausdrücklich blockiert
+React Native bringt für sein Entwickler-Menü und den Metro-Anschluss
+Berechtigungen mit, die im Release-Build sonst mitkämen: DUMP,
+SYSTEM_ALERT_WINDOW, VIBRATE und die beiden Storage-Berechtigungen. Die
+App benutzt keine davon.
+
+Für eine Schul-App ist besonders SYSTEM_ALERT_WINDOW ("Über anderen Apps
+einblenden") heikel — der Play Store zeigt sie prominent an. Deshalb
+stehen sie unter `android.blockedPermissions` in `app.json`.
+
+INTERNET bleibt bewusst drin: Die App nutzt es nicht, aber es schadet
+nicht, wird von Nutzern nicht als Eingriff wahrgenommen, und ohne diese
+Berechtigung wäre ein späteres OTA-Update über `expo-updates`
+unmöglich. Wer die App vollständig offline deklarieren will, ergänzt sie
+in der Liste — das kostet einen neuen Build.
+
+**Nach jeder Änderung an den Berechtigungen prüfen**, was tatsächlich im
+AAB steht:
+
+```
+python3 -c "import zipfile,re;d=zipfile.ZipFile('build-XXXX.aab').read('base/manifest/AndroidManifest.xml');print(sorted(set(x.decode() for x in re.findall(rb'android\.permission\.[A-Z_]+',d))))"
+```
+
 ## Offene Punkte (fachlich)
 - Stöchiometrie: Ausbeute und limitierender Reaktionspartner
 - Labor: molekulare Reaktionen nur aus der Sammlung, keine Herleitung
