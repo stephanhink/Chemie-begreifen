@@ -49,3 +49,12 @@ yarn-error.*
 # Stück, und sie werden ohnehin bei jedem Build neu erzeugt.
 build-*.aab
 build-*.apk
+
+# EAS-Credentials. "eas credentials" legt beim Herunterladen des
+# Keystores diese beiden hier ab: credentials.json enthaelt Passwort und
+# Alias im KLARTEXT, credentials/ den Keystore selbst.
+#
+# Das Repo ist oeffentlich. Wer diese Dateien bekommt, kann Updates
+# signieren, die der Play Store als echt akzeptiert.
+credentials.json
+credentials/
