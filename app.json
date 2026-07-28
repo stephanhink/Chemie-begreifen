@@ -27,6 +27,12 @@
     },
     "plugins": [
       "expo-status-bar"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "fa033ea7-d5e4-4af3-8518-7ce15c3f3488"
+      }
+    },
+    "owner": "heilpraktikerdk"
   }
 }
