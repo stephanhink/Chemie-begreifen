@@ -327,8 +327,29 @@ in der Liste — das kostet einen neuen Build.
 AAB steht:
 
 ```
-python3 -c "import zipfile,re;d=zipfile.ZipFile('build-XXXX.aab').read('base/manifest/AndroidManifest.xml');print(sorted(set(x.decode() for x in re.findall(rb'android\.permission\.[A-Z_]+',d))))"
+python3 -c "import zipfile,re;d=zipfile.ZipFile('build-XXXX.aab').read('base/manifest/AndroidManifest.xml');print(sorted(set(m.group(1).decode() for m in re.finditer(rb'uses-permission.{0,200}?(android\.permission\.[A-Z_]+)',d,re.S))))"
 ```
+
+Erwartete Ausgabe: `['android.permission.INTERNET']` — sonst nichts.
+
+#### Warum der Befehl ein `uses-permission` davor verlangt
+Die frühere Fassung suchte schlicht nach jedem `android.permission.…` im
+Manifest und meldete dadurch **DUMP mit, obwohl die App sie gar nicht
+anfordert.** Am 2026-08-01 an `build-1785263587492.aab` nachgesehen: DUMP
+steht dort nicht in einem `uses-permission`-Element, sondern als
+`android:permission`-*Attribut* am
+`androidx.profileinstaller.ProfileInstallReceiver`. Das ist die Umkehrung —
+es legt fest, dass ein *Anrufer* DUMP besitzen muss, um diesen Receiver
+ansprechen zu dürfen. Angefordert wird damit nichts, und
+`blockedPermissions` greift korrekt.
+
+Ein Fehlalarm wäre hier teuer: Wer ihm glaubt, sucht nach einem Problem,
+das es nicht gibt — oder gewöhnt sich an, die Meldung zu ignorieren, und
+übersieht beim nächsten Mal eine echte Berechtigung.
+
+Aufgefallen ist das beim Aufsetzen des Schwesterprojekts
+`~/Documents/GitHub/Mathematik` (`stephanhink/Mathe-begreifen`), das
+dieselbe Veröffentlichungskette benutzt.
 
 ## Offene Punkte (fachlich)
 - Stöchiometrie: Ausbeute und limitierender Reaktionspartner
